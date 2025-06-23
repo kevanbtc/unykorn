@@ -1,0 +1,11 @@
+node_modules
+artifacts
+cache
+compile.log
+install.log
+solc.log
+test.log
+frontend/node_modules
+frontend/compile.log
+frontend/install.log
+frontend/vite.log
