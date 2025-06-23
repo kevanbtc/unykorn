@@ -4,6 +4,13 @@ from pathlib import Path
 import shutil
 
 
+def ensure_node_dependencies():
+    """Install npm packages if the node_modules directory is missing."""
+    if not Path("node_modules/.bin/solcjs").exists():
+        print("Installing npm dependencies...")
+        run_command("npm install")
+
+
 def run_command(cmd):
     """Run a shell command and return (stdout, stderr, returncode)."""
     result = subprocess.run(cmd, shell=True, text=True, capture_output=True)
@@ -75,6 +82,7 @@ def generate_report(compiled_contracts, tests_ok):
 
 def main():
     check_git_repo()
+    ensure_node_dependencies()
     tests_ok = run_tests()
     compiled = audit_smart_contracts()
     audit_api_routes()

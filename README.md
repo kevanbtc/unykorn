@@ -11,8 +11,9 @@ simple audit.
 1. Checks the git repository and pulls the latest changes if an `origin`
    remote is configured.
 2. Runs the test suite with `pytest`.
-3. Compiles all Solidity contracts using `solcjs`.
-4. Outputs a short JSON report.
+3. Ensures Node dependencies are installed with `npm install` if needed.
+4. Compiles all Solidity contracts using `solcjs`.
+5. Outputs a short JSON report.
 
 ## Smart Contracts
 
@@ -21,3 +22,13 @@ simple audit.
 
 Contracts are located in the `contracts/` directory. The tests compile these
 contracts with a local solcjs compiler to avoid external network access.
+
+## Setup
+
+Before running the tests or the audit script, install the Node.js dependencies:
+
+```bash
+npm install
+```
+
+This installs the `solc` compiler used by the tests and audit script.
