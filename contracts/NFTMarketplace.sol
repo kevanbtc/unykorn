@@ -1,11 +1,9 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 contract NFTMarketplace is ReentrancyGuard {
-    using SafeMath for uint256;
 
     IERC721 public immutable nftContract;
     uint256 public feePercentage = 5; // 5% fee
@@ -34,8 +32,8 @@ contract NFTMarketplace is ReentrancyGuard {
         require(listing.price > 0, "Not for sale");
         require(msg.value >= listing.price, "Insufficient amount");
 
-        uint256 fee = listing.price.mul(feePercentage).div(100);
-        uint256 sellerAmount = listing.price.sub(fee);
+        uint256 fee = (listing.price * feePercentage) / 100;
+        uint256 sellerAmount = listing.price - fee;
 
         nftContract.transferFrom(address(this), msg.sender, tokenId);
         payable(listing.seller).transfer(sellerAmount);
