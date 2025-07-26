@@ -1,11 +1,30 @@
-# Unykorn NFT Marketplace
+# Unykorn Contracts
 
-This repository contains example Solidity smart contracts for an NFT marketplace with staking functionality. The contracts demonstrate how to list ERC‑731 tokens for sale and allow holders to stake their NFTs to earn rewards.
+This repository contains example Solidity smart contracts for an NFT marketplace and staking functionality. Additional contracts showcase a simple token suite and subscription logic inspired by the V-CHANNEL specification.
 
 ## Contracts
 
-- `NFTMarketplace.sol` handles listing and purchasing NFTs with a configurable fee.
-- `NFTStaking.sol` allows users to stake their NFTs to earn ETH rewards over time.
+- `NFTMarketplace.sol` – list and purchase ERC‑721 tokens with a marketplace fee.
+- `NFTStaking.sol` – stake NFTs to earn ETH rewards over time.
+- `VTV.sol` – basic ERC‑20 utility token.
+- `VCHAN.sol` – governance token.
+- `VPOINT.sol` – soulbound loyalty points that cannot be transferred.
+- `SubscriptionVault.sol` – basic monthly subscription contract using an ERC‑20 token.
+- `AffiliateRouter.sol` – records and pays out referral commissions.
 
-These contracts rely on [OpenZeppelin](https://openzeppelin.com/) libraries. They can be compiled and tested using tools such as Remix or Hardhat.
+## Development
 
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Compile contracts:
+   ```bash
+   npx hardhat compile
+   ```
+3. Deploy (example script):
+   ```bash
+   npx hardhat run scripts/deploy.js --network yourNetwork
+   ```
+
+Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
