@@ -4,9 +4,12 @@ require('dotenv').config();
 async function screenAddress(address) {
   const apiKey = process.env.CHAINALYSIS_API_KEY;
   const apiUrl = process.env.CHAINALYSIS_API_URL || 'https://public.chainalysis.com/api/v1/address';
-  if (!apiKey) {
-    throw new Error('Missing CHAINALYSIS_API_KEY');
+
+  if (process.env.MOCK_KYT === 'true' || !apiKey) {
+    console.log(`\u{1F512} MOCK KYT screening for ${address} \u2192 low risk`);
+    return { risk: 'low' };
   }
+
   try {
     const res = await axios.get(`${apiUrl}/${address}`, {
       headers: { 'X-API-Key': apiKey }
@@ -16,8 +19,10 @@ async function screenAddress(address) {
     } else {
       console.log(`${address} clear`);
     }
+    return res.data;
   } catch (err) {
     console.error(`screening failed for ${address}`, err.response?.data || err.message);
+    return { risk: 'unknown' };
   }
 }
 

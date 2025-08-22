@@ -52,3 +52,9 @@ CHAINALYSIS_API_KEY=yourKey node scripts/subscription-report.js <address>
 # or override the API endpoint
 CHAINALYSIS_API_KEY=yourKey CHAINALYSIS_API_URL=https://public.chainalysis.com/api/v1/address node scripts/subscription-report.js <address>
 ```
+
+For offline development without a Chainalysis API key, set `MOCK_KYT=true` to bypass the network call:
+
+```bash
+MOCK_KYT=true node scripts/subscription-report.js <address>
+```
