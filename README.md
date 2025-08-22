@@ -49,4 +49,6 @@ Screen subscription addresses against OFAC lists via the Chainalysis API:
 
 ```bash
 CHAINALYSIS_API_KEY=yourKey node scripts/subscription-report.js <address>
+# or override the API endpoint
+CHAINALYSIS_API_KEY=yourKey CHAINALYSIS_API_URL=https://public.chainalysis.com/api/v1/address node scripts/subscription-report.js <address>
 ```

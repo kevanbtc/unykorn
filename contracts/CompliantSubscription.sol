@@ -57,9 +57,15 @@ contract CompliantSubscription is Ownable {
         uint256 commission;
         if (affiliate != address(0) && affiliate != msg.sender) {
             commission = amount * affiliateBps / 10000;
-            paymentToken.transferFrom(msg.sender, affiliate, commission);
+            require(
+                paymentToken.transferFrom(msg.sender, affiliate, commission),
+                "transfer failed"
+            );
         }
-        paymentToken.transferFrom(msg.sender, owner(), amount - commission);
+        require(
+            paymentToken.transferFrom(msg.sender, owner(), amount - commission),
+            "transfer failed"
+        );
 
         uint256 end = block.timestamp + periods * PERIOD;
         if (expiry[msg.sender] < block.timestamp) {

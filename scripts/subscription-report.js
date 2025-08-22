@@ -3,11 +3,12 @@ require('dotenv').config();
 
 async function screenAddress(address) {
   const apiKey = process.env.CHAINALYSIS_API_KEY;
+  const apiUrl = process.env.CHAINALYSIS_API_URL || 'https://public.chainalysis.com/api/v1/address';
   if (!apiKey) {
     throw new Error('Missing CHAINALYSIS_API_KEY');
   }
   try {
-    const res = await axios.get(`https://public.chainalysis.com/api/v1/address/${address}`, {
+    const res = await axios.get(`${apiUrl}/${address}`, {
       headers: { 'X-API-Key': apiKey }
     });
     if (res.data?.identifications?.length) {
