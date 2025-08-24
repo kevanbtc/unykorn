@@ -1,0 +1,8 @@
+{
+  "name": "dao.mars",
+  "purpose": "Governance domain bound to ERC-6551 vault",
+  "tld": ".mars",
+  "controller": "AUTO-FROM-.3",
+  "resolver": "AUTO-FROM-.3",
+  "compliance": "AUTO-FROM-.3"
+}
