@@ -1,0 +1,24 @@
+- id: 48e_domestic_bonus
+  jurisdiction: federal
+  applies_to: ["solar", "storage"]
+  eligibility:
+    domestic_content: true
+  amount:
+    type: percent_of_capex
+    value: 0.10
+- id: ca_sgip
+  jurisdiction: CA
+  applies_to: ["storage"]
+  amount:
+    type: per_kw
+    value: 250
+- id: nyserda_residential
+  jurisdiction: NY
+  applies_to: ["solar"]
+  amount:
+    type: per_kw
+    value: 300
+- id: nyc_ll97
+  jurisdiction: NYC
+  applies_to: ["energy_efficiency"]
+  notes: "Local Law 97 carbon caps"

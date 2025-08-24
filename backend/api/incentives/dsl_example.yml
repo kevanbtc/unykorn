@@ -1,0 +1,52 @@
+- id: itc_48e
+  jurisdiction: federal
+  applies_to: ["solar","storage"]
+  eligibility:
+    min_capacity_kw: 1
+  amount:
+    type: percent_of_capex
+    value: 0.30
+  can_stack_with: ["179d","domestic_bonus"]
+- id: ga_solar_rebate
+  jurisdiction: GA
+  applies_to: ["solar"]
+  amount:
+    type: percent_of_capex
+    value: 0.05
+  caps:
+    project_usd_max: 250000
+- id: ptc_45
+  jurisdiction: federal
+  applies_to: ["wind","solar","biomass"]
+  eligibility:
+    min_capacity_kw: 100
+  amount:
+    type: per_kwh
+    value: 0.027
+  can_stack_with: ["179d"]
+  notes: "Use current IRS adjusted rate"
+- id: 179d
+  jurisdiction: federal
+  applies_to: ["commercial_efficiency"]
+  eligibility:
+    building_type: ["commercial","public"]
+  amount:
+    type: per_sqft
+    value: 5.00
+  caps:
+    project_usd_max: 1000000
+- id: fl_res_solar_rebate
+  jurisdiction: FL
+  applies_to: ["solar"]
+  amount:
+    type: percent_of_capex
+    value: 0.03
+  caps:
+    project_usd_max: 100000
+  can_stack_with: ["itc_48e"]
+- id: ca_sgip_storage
+  jurisdiction: CA
+  applies_to: ["storage"]
+  amount:
+    type: value_per_kw
+    value: 200

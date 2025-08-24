@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pyjwt
+httpx
+PyYAML
+passlib[bcrypt]
+psycopg[binary]

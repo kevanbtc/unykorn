@@ -1,0 +1,24 @@
+{
+  "issues": [
+    {
+      "title": "Multi-tenant auth & RBAC",
+      "body": "### Acceptance Criteria\n- [ ] DB: `tenants`, `users`, `memberships` tables and `tenant_id` on project tables\n- [ ] API: `current_user` dependency and `require_role` guards scoping by `tenant_id`\n- [ ] Auth: JWT sign/verify, login route returns tenant-scoped token\n- [ ] UI: `/login` page, tenant picker, user/role admin, 403 handling\n- [ ] Docs/Tests: Auth & Tenancy guide and smoke tests\n",
+      "labels": ["epic", "auth"]
+    },
+    {
+      "title": "Estimator 1.0: catalog and carrier XML export",
+      "body": "### Acceptance Criteria\n- [ ] DB: `materials`, `labor_rates`, `assemblies`, `estimates` and item tables with seed data\n- [ ] Math: line totals → subtotal → tax → OH&P → grand total\n- [ ] Export: deterministic XML with line items and totals\n- [ ] UI: catalog manager and Build Estimate flow\n- [ ] Docs/Tests: sample catalog, XML schema note, unit tests\n",
+      "labels": ["epic", "estimating"]
+    },
+    {
+      "title": "Incentive rules DSL and finance metrics",
+      "body": "### Acceptance Criteria\n- [ ] DSL: YAML/TOML rules with eligibility, amount, caps, stacking\n- [ ] Engine: deterministic stack order and conflict resolution\n- [ ] Finance: IRR/NPV/LCOE endpoints with CSV/PDF report\n- [ ] UI: incentive summary panel and downloadable report\n- [ ] Docs/Tests: example rules for GA/FL and federal, unit tests\n",
+      "labels": ["epic", "incentives"]
+    },
+    {
+      "title": "ESG sustainability layer",
+      "body": "### Acceptance Criteria\n- [ ] DB: esg_rules, esg_assessments, esg_reports tables with sample programs\n- [ ] API: /api/esg/assess, /credits, /energystar, /report endpoints\n- [ ] UI: dashboard ESG tab with scorecard, credits, report download\n- [ ] Docs/Tests: ESG guide and stub tests\n",
+      "labels": ["epic", "esg"]
+    }
+  ]
+}
