@@ -4,6 +4,7 @@ This repository contains example Solidity smart contracts for an NFT marketplace
 
 ## Contracts
 
+- `SGEAffiliateSaleV3.sol` – Basel-compliant token sale supporting multi-stable purchases and ISO 20022 events.
 - `NFTMarketplace.sol` – list and purchase ERC‑721 tokens with a marketplace fee.
 - `NFTStaking.sol` – stake NFTs to earn ETH rewards over time.
 - `VTV.sol` – basic ERC‑20 utility token.
@@ -22,9 +23,10 @@ This repository contains example Solidity smart contracts for an NFT marketplace
    ```bash
    npx hardhat compile
    ```
-3. Deploy (example script):
+3. Deploy (example scripts):
    ```bash
    npx hardhat run scripts/deploy.js --network yourNetwork
+   npx hardhat run scripts/deployAffiliateSaleV3.js --network yourNetwork
    ```
 
 Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
