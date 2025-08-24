@@ -1,30 +1,82 @@
-# Unykorn Contracts
+# FTH Platform Monorepo
 
-This repository contains example Solidity smart contracts for an NFT marketplace and staking functionality. Additional contracts showcase a simple token suite and subscription logic inspired by the V-CHANNEL specification.
+This repository provides a scaffold for Future Tech Holdings (FTH),
+covering smart contracts, a backend API with AI agent stubs, a Next.js
+frontend, and documentation templates.
 
-## Contracts
+## Structure
 
-- `NFTMarketplace.sol` – list and purchase ERC‑721 tokens with a marketplace fee.
-- `NFTStaking.sol` – stake NFTs to earn ETH rewards over time.
-- `VTV.sol` – basic ERC‑20 utility token.
-- `VCHAN.sol` – governance token.
-- `VPOINT.sol` – soulbound loyalty points that cannot be transferred.
-- `SubscriptionVault.sol` – basic monthly subscription contract using an ERC‑20 token.
-- `AffiliateRouter.sol` – records and pays out referral commissions.
+```
+contracts/            Solidity contracts for tokens and cash flow routing
+backend/              Express server with AI agent stubs
+  ├── ai_agents/      Financial model and document generators
+  ├── routes/         Example REST endpoints
+  └── services/       Placeholder integration modules
+frontend/             Next.js app for project input and dashboards
+  ├── pages/          Basic pages for workflow
+  └── components/     Shared UI components
+docs/                 Regulatory and investor document templates
+```
+
+Each section contains minimal placeholder code so the project can be
+opened in a development environment and expanded.
 
 ## Development
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Compile contracts:
-   ```bash
-   npx hardhat compile
-   ```
-3. Deploy (example script):
-   ```bash
-   npx hardhat run scripts/deploy.js --network yourNetwork
-   ```
+Install dependencies and compile contracts:
 
-Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
+```bash
+npm install
+npm run compile
+```
+
+### Offline compiler setup
+
+Hardhat normally downloads the Solidity compiler at runtime. If network
+access is restricted, install the compiler locally and Hardhat will use
+it without reaching out to the internet:
+
+```bash
+npm install --save-dev solc@0.8.20
+```
+
+For Slither analysis, a matching native `solc` is also required:
+
+```bash
+pip3 install slither-analyzer solc-select
+solc-select install 0.8.20
+solc-select use 0.8.20
+```
+
+Hardhat will automatically use the native compiler if it is available at
+`/usr/bin/solc`, allowing compilation without network access.
+
+### Docker development environment
+
+To avoid manual toolchain setup, a Docker configuration is provided. It
+bundles Node.js, `solc` 0.8.20, and Slither. Build and open a shell with:
+
+```bash
+docker compose build
+docker compose run --rm dev bash
+```
+
+Inside the container you can run `npm test` or `npm run slither` without
+requiring outbound network connections.
+
+### Static Analysis
+
+Run Slither to perform basic static analysis of the Solidity contracts:
+
+```bash
+npm run slither
+```
+
+### Tests
+
+Hardhat tests cover the compliance registry and token interactions. Compile once before running tests:
+
+```bash
+npm run compile
+npm test
+```
