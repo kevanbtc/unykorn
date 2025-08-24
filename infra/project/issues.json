@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Epic: Multi-tenant auth & RBAC",
+    "body": "- [ ] DB migrations for tenants, users, memberships\n- [ ] JWT auth with tenant_id + role\n- [ ] Frontend login and tenant switcher\n- [ ] Auth & Tenancy docs and tests",
+    "labels": ["epic", "auth"]
+  },
+  {"title": "Auth: DB migration", "labels": ["backend", "auth"]},
+  {"title": "Auth: Router endpoints", "labels": ["backend", "auth"]},
+  {"title": "Auth: Frontend screen", "labels": ["frontend", "auth"]},
+  {"title": "Auth: Docs & tests", "labels": ["docs", "tests", "auth"]},
+  {"title": "Auth: CI update", "labels": ["ci", "auth"]},
+  {
+    "title": "Epic: Estimator catalog & XML export",
+    "body": "- [ ] Catalog schemas and CRUD endpoints\n- [ ] Estimate builder with OH&P, taxes, waste\n- [ ] Carrier XML export endpoint\n- [ ] UI screens and unit tests",
+    "labels": ["epic", "estimator"]
+  },
+  {"title": "Estimator: DB migration", "labels": ["backend", "estimator"]},
+  {"title": "Estimator: Router endpoints", "labels": ["backend", "estimator"]},
+  {"title": "Estimator: Frontend screen", "labels": ["frontend", "estimator"]},
+  {"title": "Estimator: Docs & tests", "labels": ["docs", "tests", "estimator"]},
+  {"title": "Estimator: CI update", "labels": ["ci", "estimator"]},
+  {
+    "title": "Epic: Incentive rules DSL & finance engine",
+    "body": "- [ ] Rules DSL parser and evaluator\n- [ ] Incentive stacking and finance metrics\n- [ ] Incentive summary UI and reports\n- [ ] Example rules and unit tests",
+    "labels": ["epic", "incentives"]
+  },
+  {"title": "Incentives: DB migration", "labels": ["backend", "incentives"]},
+  {"title": "Incentives: Router endpoints", "labels": ["backend", "incentives"]},
+  {"title": "Incentives: Frontend screen", "labels": ["frontend", "incentives"]},
+  {"title": "Incentives: Docs & tests", "labels": ["docs", "tests", "incentives"]},
+  {"title": "Incentives: CI update", "labels": ["ci", "incentives"]},
+  {
+    "title": "Epic: ESG sustainability layer",
+    "body": "- [ ] Rules DB and migrations\n- [ ] ESG API endpoints (assess, credits, energystar, report)\n- [ ] Dashboard ESG tab and report download\n- [ ] Docs and tests",
+    "labels": ["epic", "esg"]
+  },
+  {"title": "ESG: DB migration", "labels": ["backend", "esg"]},
+  {"title": "ESG: Router endpoints", "labels": ["backend", "esg"]},
+  {"title": "ESG: Frontend screen", "labels": ["frontend", "esg"]},
+  {"title": "ESG: Docs & tests", "labels": ["docs", "tests", "esg"]},
+  {"title": "ESG: CI update", "labels": ["ci", "esg"]}
+]

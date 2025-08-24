@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install -r backend/requirements.txt pytest httpx
+      - run: pytest backend/tests
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm test
+
+  smoke_if_docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Docker
+        run: docker -v || echo "no docker"
+      - uses: actions/checkout@v4
+      - name: Conditional compose
+        if: ${{ success() }}
+        run: |
+          if command -v docker >/dev/null 2>&1; then
+            docker compose up -d --build
+            sleep 10
+            curl -sSf http://localhost:8000/health
+            docker compose down
+          else
+            echo "Skipping compose smoke (Docker not available)"
+          fi
