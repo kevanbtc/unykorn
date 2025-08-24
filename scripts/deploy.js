@@ -2,22 +2,23 @@ const hre = require("hardhat");
 
 async function main() {
   const [deployer] = await hre.ethers.getSigners();
-  console.log("Deploying with", deployer.address);
 
-  const VTV = await hre.ethers.getContractFactory("VTV");
-  const vtv = await VTV.deploy();
-  await vtv.deployed();
-  console.log("VTV deployed to", vtv.address);
+  const registry = await (await hre.ethers.getContractFactory("ComplianceRegistry")).deploy();
+  await registry.deployed();
 
-  const VCHAN = await hre.ethers.getContractFactory("VCHAN");
-  const vchan = await VCHAN.deploy();
-  await vchan.deployed();
-  console.log("VCHAN deployed to", vchan.address);
+  const Stablecoin = await hre.ethers.getContractFactory("Stablecoin");
+  const stablecoin = await Stablecoin.deploy();
+  await stablecoin.deployed();
 
-  const VPOINT = await hre.ethers.getContractFactory("VPOINT");
-  const vpoint = await VPOINT.deploy();
-  await vpoint.deployed();
-  console.log("VPOINT deployed to", vpoint.address);
+  const Proof = await hre.ethers.getContractFactory("ProofOfReserves");
+  const proof = await Proof.deploy(deployer.address);
+  await proof.deployed();
+
+  const Governance = await hre.ethers.getContractFactory("Governance");
+  const governance = await Governance.deploy();
+  await governance.deployed();
+
+  console.log(`Stablecoin deployed to ${stablecoin.address}`);
 }
 
 main().catch((error) => {
