@@ -28,3 +28,16 @@ This repository contains example Solidity smart contracts for an NFT marketplace
    ```
 
 Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
+
+## Static Analysis
+
+Slither is used to run static analysis on the Solidity contracts.
+
+1. Install Slither:
+   ```bash
+   pip install slither-analyzer
+   ```
+2. Run the analysis:
+   ```bash
+   npm run slither
+   ```

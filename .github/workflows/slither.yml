@@ -1,0 +1,23 @@
+name: Slither
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/**'
+      - 'package.json'
+      - '.github/workflows/slither.yml'
+
+jobs:
+  slither:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: pip install slither-analyzer
+      - run: npm install
+      - run: npm run slither
