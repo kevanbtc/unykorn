@@ -1,0 +1,26 @@
+name: slither
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  slither:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install Python deps
+        run: sudo apt-get update && sudo apt-get install -y python3-pip
+      - name: Install solc-select and Slither
+        run: pip3 install solc-select slither-analyzer
+      - name: Set solc version
+        run: solc-select install 0.8.20 && solc-select use 0.8.20
+      - name: Run Slither
+        run: npm run slither
