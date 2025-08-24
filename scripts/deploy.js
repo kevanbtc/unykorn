@@ -1,23 +1,24 @@
-const hre = require("hardhat");
+const { ethers } = require("hardhat");
+require("dotenv").config();
 
 async function main() {
-  const [deployer] = await hre.ethers.getSigners();
-  console.log("Deploying with", deployer.address);
+  const [deployer] = await ethers.getSigners();
+  console.log("Deploying contracts with account:", deployer.address);
 
-  const VTV = await hre.ethers.getContractFactory("VTV");
-  const vtv = await VTV.deploy();
-  await vtv.deployed();
-  console.log("VTV deployed to", vtv.address);
+  const Stablecoin = await ethers.getContractFactory("Stablecoin");
+  const stable = await Stablecoin.deploy();
+  await stable.deployed();
+  console.log("Stablecoin deployed at:", stable.address);
 
-  const VCHAN = await hre.ethers.getContractFactory("VCHAN");
-  const vchan = await VCHAN.deploy();
-  await vchan.deployed();
-  console.log("VCHAN deployed to", vchan.address);
+  const Compliance = await ethers.getContractFactory("ComplianceRegistry");
+  const compliance = await Compliance.deploy();
+  await compliance.deployed();
+  console.log("ComplianceRegistry deployed at:", compliance.address);
 
-  const VPOINT = await hre.ethers.getContractFactory("VPOINT");
-  const vpoint = await VPOINT.deploy();
-  await vpoint.deployed();
-  console.log("VPOINT deployed to", vpoint.address);
+  const VaultManager = await ethers.getContractFactory("VaultManager");
+  const vault = await VaultManager.deploy(stable.address);
+  await vault.deployed();
+  console.log("VaultManager deployed at:", vault.address);
 }
 
 main().catch((error) => {
