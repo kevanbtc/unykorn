@@ -1,0 +1,40 @@
+{
+  "chain_id": "unykorn-dna-001",
+  "consensus": "Tendermint",
+  "language": "UniLang",
+  "origin_entropy": "BLAKE3(timestamp + VaultBTC tx + IPFS CID)",
+  "modules": {
+    "IdentityVault": {
+      "type": "Non-transferable ERC-721 equivalent",
+      "minting": "One-time only per origin entropy",
+      "controls": ["Soulbound", "Vault-bound", "GenesisCert-linked"]
+    },
+    "SubVaults": {
+      "type": "ERC-6551-style vault accounts",
+      "limit": 9,
+      "rule": "Only parent can issue",
+      "inheritance": true
+    },
+    "GlacierCerts": {
+      "export": ["IPFS", "PDF", "BLAKE3"],
+      "signed_by": "Admin Wallet or DAO"
+    },
+    "ComplianceLedger": {
+      "standards": ["ISO 20022", "FATF", "Reg D", "GDPR"],
+      "metadata_hashing": "ZK-SNARK optional",
+      "vault_owner_attestation": true
+    },
+    "VaultDAO": {
+      "functions": ["Heir assignment", "Staking policy", "Governance hooks"],
+      "structure": "1 vault = 1 vote"
+    }
+  },
+  "wallet_control": {
+    "root_admin": "0x8aced25DC8530FDaf0f86D53a0A1E02AAfA7Ac7A",
+    "mint_authority": "QuantumSeedOnly",
+    "validator": {
+      "mnemonic": "auto-generated",
+      "stake": "1,000,000,000 uDNA"
+    }
+  }
+}
