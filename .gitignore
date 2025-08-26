@@ -1,3 +1,6 @@
 node_modules/
 build/
 .env
+frontend/node_modules/
+frontend/.next/
+frontend/out/
