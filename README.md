@@ -2,6 +2,16 @@
 
 This repository contains example Solidity smart contracts for an NFT marketplace and staking functionality. Additional contracts showcase a simple token suite and subscription logic inspired by the V-CHANNEL specification.
 
+## AI.gov Scaffold
+
+A preliminary scaffold for the AI.gov / Unykorn Sovereign Stack lives alongside the contracts:
+
+- `frontend` – Next.js 14 portal with TailwindCSS and an API route serving `funding.json`.
+- `backend` – Express server exposing the same funding endpoint.
+- `agents` – placeholder TypeScript classes for grant pipeline agents.
+
+Funding opportunities reside in `funding.json` at the project root and are consumed by both frontend and backend layers.
+
 ## Contracts
 
 - `NFTMarketplace.sol` – list and purchase ERC‑721 tokens with a marketplace fee.
@@ -28,3 +38,4 @@ This repository contains example Solidity smart contracts for an NFT marketplace
    ```
 
 Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
+
