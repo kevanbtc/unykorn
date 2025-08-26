@@ -5,9 +5,21 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/utils/Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./ComplianceRegistry.sol";
 
 contract VTV is ERC20, ERC20Burnable, Pausable, Ownable {
-    constructor() ERC20("VTV", "VTV") Ownable(msg.sender) {
+    ComplianceRegistry public immutable complianceRegistry;
+
+    modifier onlyCompliant(address account) {
+        require(
+            account == address(0) || complianceRegistry.isCompliant(account),
+            "Non-compliant participant"
+        );
+        _;
+    }
+
+    constructor(address registry) ERC20("VTV", "VTV") Ownable(msg.sender) {
+        complianceRegistry = ComplianceRegistry(registry);
         _mint(msg.sender, 1_000_000 ether);
     }
 
@@ -19,7 +31,13 @@ contract VTV is ERC20, ERC20Burnable, Pausable, Ownable {
         _unpause();
     }
 
-    function _update(address from, address to, uint256 amount) internal override whenNotPaused {
+    function _update(address from, address to, uint256 amount)
+        internal
+        override
+        whenNotPaused
+        onlyCompliant(from)
+        onlyCompliant(to)
+    {
         super._update(from, to, amount);
     }
 }
