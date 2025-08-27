@@ -1,30 +1,25 @@
-# Unykorn Contracts
+# Stablecoin Compliance Template
 
-This repository contains example Solidity smart contracts for an NFT marketplace and staking functionality. Additional contracts showcase a simple token suite and subscription logic inspired by the V-CHANNEL specification.
+This repository is a reusable framework for building **U.S.-compliant stablecoins** and RWA-backed tokens.  
+It integrates **smart contract controls, regulatory checklists, and audit docs** into one package.
 
-## Contracts
+## Features
+- ✅ ERC20 stablecoin with U.S. compliance hooks
+- ✅ KYC/AML whitelist + OFAC blacklist enforcement
+- ✅ Proof-of-Reserves via Chainlink oracles
+- ✅ Governance & upgradability (UUPS)
+- ✅ Prebuilt U.S. regulatory compliance checklist
+- ✅ Scripts for deployment, verification, and reporting
 
-- `NFTMarketplace.sol` – list and purchase ERC‑721 tokens with a marketplace fee.
-- `NFTStaking.sol` – stake NFTs to earn ETH rewards over time.
-- `VTV.sol` – basic ERC‑20 utility token.
-- `VCHAN.sol` – governance token.
-- `VPOINT.sol` – soulbound loyalty points that cannot be transferred.
-- `SubscriptionVault.sol` – basic monthly subscription contract using an ERC‑20 token.
-- `AffiliateRouter.sol` – records and pays out referral commissions.
+## Use Cases
+- Stablecoins (USD, carbon-backed, gold-backed, etc.)
+- Tokenized real-world assets (land, water rights, housing)
+- Vault-wrapped security tokens
+- DAO-managed consumer tokens
 
-## Development
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Compile contracts:
-   ```bash
-   npx hardhat compile
-   ```
-3. Deploy (example script):
-   ```bash
-   npx hardhat run scripts/deploy.js --network yourNetwork
-   ```
-
-Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
+## Getting Started
+1. Clone the repo
+2. Install dependencies
+3. Add your `.env` with RPC + private key
+4. Deploy smart contracts with Hardhat or Foundry
+5. Complete compliance docs under `/compliance`

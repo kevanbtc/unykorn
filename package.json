@@ -1,14 +1,14 @@
 {
-  "name": "unykorn",
+  "name": "stablecoin-compliance-template",
   "version": "1.0.0",
-  "description": "This repository contains example Solidity smart contracts for an NFT marketplace with staking functionality. The contracts demonstrate how to list ERC‑731 tokens for sale and allow holders to stake their NFTs to earn rewards.",
+  "description": "Reusable framework for U.S.-compliant stablecoins and RWA tokens",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx hardhat test"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.3",
