@@ -1,0 +1,50 @@
+[
+  {
+    "program": "NSF STEM + AI Education Grants",
+    "eligibility": "US-based K-12 schools, nonprofits, education tech orgs",
+    "amount": "$250,000 – $1,000,000",
+    "deadline": "2025-11-15",
+    "applyLink": "https://www.nsf.gov/funding/",
+    "unykornFit": "Frame the Unykorn Sovereign Challenge as AI + Web3 STEM education pilot for youth"
+  },
+  {
+    "program": "World Bank DE4A (Digital Economy for Africa)",
+    "eligibility": "Govts, NGOs, public-private partnerships",
+    "amount": "$5M – $50M",
+    "deadline": "Rolling (regional calls)",
+    "applyLink": "https://www.worldbank.org/en/programs/all-digital-economy-for-africa",
+    "unykornFit": "Position Unykorn vaults as digital public infrastructure for education + sovereignty"
+  },
+  {
+    "program": "Polygon Ecosystem Fund",
+    "eligibility": "Web3 builders, education initiatives, dApps",
+    "amount": "$25,000 – $250,000",
+    "deadline": "Open / rolling",
+    "applyLink": "https://polygon.technology/grants",
+    "unykornFit": "Host youth hackathons using Polygon + ERC-6551 vaults for tokenized projects"
+  },
+  {
+    "program": "Avalanche Multiverse Grant",
+    "eligibility": "DeFi, RWA, and education projects",
+    "amount": "$50,000 – $500,000",
+    "deadline": "Rolling",
+    "applyLink": "https://avax.network/grants",
+    "unykornFit": "Deploy Sovereign Challenge dApps as Avalanche subnet demos"
+  },
+  {
+    "program": "UNESCO Digital Learning Grants",
+    "eligibility": "Global education NGOs, youth-led initiatives",
+    "amount": "$100,000 – $2,000,000",
+    "deadline": "2026-01-31",
+    "applyLink": "https://en.unesco.org/education/digital",
+    "unykornFit": "Present Unykorn as a sovereignty literacy curriculum for K-12 worldwide"
+  },
+  {
+    "program": "Chan Zuckerberg Initiative (CZI) Education Innovation",
+    "eligibility": "Nonprofits, community orgs, social impact startups",
+    "amount": "$100,000 – $1,000,000",
+    "deadline": "Annual cycle",
+    "applyLink": "https://chanzuckerberg.com/rfa",
+    "unykornFit": "Package the Challenge as community-based digital sovereignty education"
+  }
+]
