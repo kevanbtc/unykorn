@@ -1,0 +1,30 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-json
+
+  - repo: local
+    hooks:
+      - id: go-fmt
+        name: go fmt + goimports
+        entry: bash -c 'cd go-bus && gofmt -w -s . && goimports -w .'
+        language: system
+        types: [go]
+      - id: go-vet
+        name: go vet
+        entry: bash -c 'cd go-bus && go vet ./...'
+        language: system
+        types: [go]
+
+  - repo: local
+    hooks:
+      - id: forge-fmt
+        name: forge fmt
+        entry: bash -c 'forge fmt'
+        language: system
+        files: \.sol$

@@ -1,0 +1,28 @@
+name: Solidity Lint (solhint)
+
+on:
+  push:
+    paths:
+      - "src/**/*.sol"
+      - ".solhint.json"
+      - "package.json"
+      - ".github/workflows/solhint.yml"
+  pull_request:
+
+jobs:
+  solhint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install solhint
+        run: npm ci || npm i
+
+      - name: Run solhint
+        run: npm run lint:sol

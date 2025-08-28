@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  iso-bus:
+    build:
+      context: ./go-bus
+      dockerfile: Dockerfile
+    ports: ["8080:8080"]
+    volumes:
+      - ./.iso-bus-data:/data

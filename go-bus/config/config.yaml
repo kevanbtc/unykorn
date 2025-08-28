@@ -1,0 +1,8 @@
+http:
+  addr: ":8080"
+data_dir: ".iso-bus-data"
+log_level: "info"
+institution:
+  name: "Unykorn Global Finance"
+  bic: "UNYKUS33XXX"
+  lei: "5493001KJTIIGC8Y1R12"

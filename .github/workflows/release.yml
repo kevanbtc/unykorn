@@ -1,0 +1,95 @@
+name: Release (Binaries + Artifacts)
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+  packages: read
+
+jobs:
+  build-go:
+    name: Build ISO-bus binaries
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: go-bus
+    strategy:
+      fail-fast: false
+      matrix:
+        goos: [linux, darwin, windows]
+        goarch: [amd64, arm64]
+        exclude:
+          - goos: windows
+            goarch: arm64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21.x"
+
+      - name: Tidy
+        run: go mod tidy
+
+      - name: Build
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+        run: |
+          BIN_NAME=iso-bus
+          EXT=""
+          if [ "${{ matrix.goos }}" = "windows" ]; then EXT=".exe"; fi
+          mkdir -p dist
+          go build -trimpath -ldflags="-s -w" -o "dist/${BIN_NAME}${EXT}" ./cmd/iso-bus
+          cd dist
+          ARCHIVE="iso-bus_${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz"
+          tar -czf "$ARCHIVE" "${BIN_NAME}${EXT}"
+
+      - name: Upload release asset (Go)
+        uses: softprops/action-gh-release@v2
+        with:
+          files: go-bus/dist/iso-bus_${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz
+
+  build-foundry:
+    name: Build Foundry artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
+
+      - name: Cache lib
+        uses: actions/cache@v4
+        with:
+          path: lib
+          key: ${{ runner.os }}-lib-${{ hashFiles('**/foundry.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-lib-
+
+      - name: Install deps
+        run: |
+          forge install OpenZeppelin/openzeppelin-contracts-upgradeable@v5.0.2 \
+                       OpenZeppelin/openzeppelin-contracts@v5.0.2 \
+                       foundry-rs/forge-std
+
+      - name: Build
+        run: forge build
+
+      - name: Package artifacts
+        run: |
+          mkdir -p release
+          zip -r release/foundry_artifacts.zip out
+
+      - name: Upload release asset (Foundry)
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/foundry_artifacts.zip
