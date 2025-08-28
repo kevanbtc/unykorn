@@ -1,0 +1,43 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci || npm i
+      - run: make ci
+      - name: Test with coverage
+        run: npm run coverage
+      - name: SBOM (Syft)
+        uses: anchore/sbom-action@v0
+        with:
+          output-file: sbom.json
+      - name: Vulnerability Scan (Grype)
+        uses: anchore/scan-action@v3
+        with:
+          sbom: sbom.json
+        continue-on-error: true
+        # report.json will be produced by the scan
+      - name: Secret scan
+        uses: trufflesecurity/trufflehog@v3
+        with:
+          path: .
+          extra_args: --results=verified
+        continue-on-error: true
+      - name: Upload CI artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-artifacts
+          path: |
+            sbom.json
+            report.json
+            coverage/
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/coverage-final.json
+          fail_ci_if_error: false
