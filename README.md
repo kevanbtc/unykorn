@@ -1,5 +1,7 @@
 # Unykorn Contracts
 
+![CI](https://github.com/kevanbtc/future-tech-holdings-rwa-/actions/workflows/ci.yml/badge.svg)
+
 This repository contains example Solidity smart contracts for an NFT marketplace and staking functionality. Additional contracts showcase a simple token suite and subscription logic inspired by the V-CHANNEL specification.
 
 ## Contracts
@@ -28,3 +30,7 @@ This repository contains example Solidity smart contracts for an NFT marketplace
    ```
 
 Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
+
+## RWA evaluation workbook
+
+Workbooks and additional tooling will be published here to assist with real-world asset evaluations.

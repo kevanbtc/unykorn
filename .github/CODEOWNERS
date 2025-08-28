@@ -1,0 +1,4 @@
+# .github/CODEOWNERS
+*                             @kevanbtc
+docs/**                       @kevanbtc
+.github/**                    @kevanbtc
