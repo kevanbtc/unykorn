@@ -1,14 +1,15 @@
 {
-  "name": "unykorn",
+  "name": "digital-giant-mog",
   "version": "1.0.0",
-  "description": "This repository contains example Solidity smart contracts for an NFT marketplace with staking functionality. The contracts demonstrate how to list ERC‑731 tokens for sale and allow holders to stake their NFTs to earn rewards.",
+  "description": "Digital Giant x MOG sovereign domain registry with compliance middleware and atomic settlement.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "hardhat test",
+    "build": "hardhat compile"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "kevanbtc",
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.3",
