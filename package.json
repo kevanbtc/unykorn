@@ -1,10 +1,10 @@
 {
   "name": "unykorn",
   "version": "1.0.0",
-  "description": "This repository contains example Solidity smart contracts for an NFT marketplace with staking functionality. The contracts demonstrate how to list ERC‑731 tokens for sale and allow holders to stake their NFTs to earn rewards.",
+  "description": "Modular banking-grade stack for USDx stablecoin issuance, RWA tokenization, and compliance tooling.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx hardhat test"
   },
   "keywords": [],
   "author": "",
@@ -12,10 +12,13 @@
   "type": "commonjs",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.3",
-    "@openzeppelin/contracts": "^5.4.0",
+    "@openzeppelin/contracts": "^4.9.5",
     "chai": "^6.0.1",
     "ethers": "^5.8.0",
     "hardhat": "^2.26.1",
-    "solc": "^0.8.30"
+    "solc": "^0.8.24"
+  },
+  "dependencies": {
+    "axios": "^1.11.0"
   }
 }
