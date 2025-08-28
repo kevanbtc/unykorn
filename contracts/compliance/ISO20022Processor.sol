@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 /// @title ISO20022 Message Processor
 /// @notice Logs hashes of processed ISO20022 messages

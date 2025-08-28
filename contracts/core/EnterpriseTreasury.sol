@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.24;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
@@ -35,13 +35,15 @@ contract EnterpriseTreasury is AccessControl, ReentrancyGuard {
 
     /// @notice Mint USDx based on off-chain settlement
     /// @param req settlement mint request data
+    error ZeroAmount();
+
     function mintFromSettlement(MintRequest calldata req)
         external
         onlyRole(COMPLIANCE_ROLE)
         nonReentrant
         returns (uint256)
     {
-        require(req.amount > 0, "ZERO_AMOUNT");
+        if (req.amount == 0) revert ZeroAmount();
         usdx.mint(req.beneficiary, req.amount, req.reference);
         emit MintedFromSettlement(req.beneficiary, req.amount, req.reference);
         return req.amount;
