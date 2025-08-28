@@ -1,0 +1,23 @@
+name: Build Banker Packet CLI
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: |
+          docker build -t banker-packet banker-packet
+      - name: Generate PDF
+        run: |
+          docker run --rm -v "${{ github.workspace }}/banker-packet:/data" banker-packet --config /data/sample.config.json --out /data/output.pdf
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: banker-packet
+          path: banker-packet/output.pdf

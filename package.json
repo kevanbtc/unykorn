@@ -4,7 +4,7 @@
   "description": "This repository contains example Solidity smart contracts for an NFT marketplace with staking functionality. The contracts demonstrate how to list ERC‑731 tokens for sale and allow holders to stake their NFTs to earn rewards.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "hardhat test --no-compile"
   },
   "keywords": [],
   "author": "",

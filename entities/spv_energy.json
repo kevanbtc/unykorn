@@ -1,0 +1,8 @@
+{
+  "title": "SPV Energy Banker Packet",
+  "ein": "00-0000008",
+  "appraisalValue": 30000000,
+  "proofOfReservesCid": "bafyspvenergyporcid",
+  "glacierCid": "bafyspvenergyglaciercid",
+  "creditScore": "A"
+}
