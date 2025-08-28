@@ -1,30 +1,61 @@
-# Unykorn Contracts
+# 🦄 Digital Giant x MOG Sovereign Domains
 
-This repository contains example Solidity smart contracts for an NFT marketplace and staking functionality. Additional contracts showcase a simple token suite and subscription logic inspired by the V-CHANNEL specification.
+Enterprise-ready domain registry and settlement stack built on Polygon.
+Features compliance primitives, stablecoin settlement, and affiliate
+program support.
 
-## Contracts
+## ✨ Features
+- **DigitalGiantRegistry** – ERC-721 domain NFTs with resolution hooks
+- **VaultProofNFT** – on-chain compliance certificates (EIN, articles)
+- **AtomicSettlementBus** – stablecoin PvP/DvP engine with circuit breaker and affiliate hook
+- **AffiliateRegistry** – tracks referrals and withdrawals with pause control
+- **ComplianceMiddleware** – KYC enforcement and circuit breaker
+- **ComplianceCouncil** – DAO-style address freezing
+- Additional sample contracts: NFT marketplace, staking, token suite
 
-- `NFTMarketplace.sol` – list and purchase ERC‑721 tokens with a marketplace fee.
-- `NFTStaking.sol` – stake NFTs to earn ETH rewards over time.
-- `VTV.sol` – basic ERC‑20 utility token.
-- `VCHAN.sol` – governance token.
-- `VPOINT.sol` – soulbound loyalty points that cannot be transferred.
-- `SubscriptionVault.sol` – basic monthly subscription contract using an ERC‑20 token.
-- `AffiliateRouter.sol` – records and pays out referral commissions.
+## 🛠️ Quick Start
+```bash
+# Install dependencies
+npm install
 
-## Development
+# Compile contracts
+npm run build
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Compile contracts:
-   ```bash
-   npx hardhat compile
-   ```
-3. Deploy (example script):
-   ```bash
-   npx hardhat run scripts/deploy.js --network yourNetwork
-   ```
+# Run tests
+npm test
 
-Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
+# Deploy (example)
+npx hardhat run scripts/deploy.js --network yourNetwork
+```
+
+## 🔧 Configuration
+Copy `.env.example` to `.env` and populate the following values:
+
+- `RPC_URL` – Polygon RPC endpoint
+- `PRIVATE_KEY` – Deployer key
+- `PINATA_JWT` – Pinata authentication token for IPFS
+- `COUNCIL_ADDRESSES` – Comma-separated list of compliance council members
+- `MULTISIG_SAFE` – Gnosis Safe that will assume contract ownership
+
+## 📁 Structure
+```
+contracts/   Solidity sources
+scripts/     Hardhat deployment and utility scripts
+test/        Example tests
+docs/        Audit and valuation reports
+```
+
+## 🤝 Contributing
+Please open issues and pull requests. Critical contracts are `Ownable` so a
+multi-sig can administer upgrades. See `CODEOWNERS` for the default maintainer.
+Guidelines are provided in [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## 🔐 Security
+Automated static analysis runs in CI via [Slither](https://github.com/crytic/slither).
+See [SECURITY.md](./SECURITY.md) for how to report vulnerabilities.
+
+## 📄 License
+MIT
+
+## 📚 Documentation
+Extended audit and valuation materials are available in the [docs](./docs) directory.
