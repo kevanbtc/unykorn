@@ -1,0 +1,41 @@
+{
+  "admin": "$DEPLOYER",
+  "deploySimpleComplianceRegistry": true,
+  "complianceRegistry": "0x0000000000000000000000000000000000000000",
+  "por": {
+    "type": "chainlink",
+    "feed": "0x0000000000000000000000000000000000000000",
+    "staleAfter": 86400
+  },
+  "roles": {
+    "minter": "$DEPLOYER",
+    "compliance": "$DEPLOYER",
+    "pauser": "$DEPLOYER",
+    "law": "$DEPLOYER",
+    "upgrader": "$DEPLOYER"
+  },
+  "instances": [
+    {
+      "name": "Unykorn USD",
+      "symbol": "USDx",
+      "decimals": 6,
+      "currencyCode": "USD",
+      "collateralType": "t-bills",
+      "jurisdiction": "US",
+      "policyURI": "ipfs://YOUR-POLICY-CID",
+      "lawEnforcementEscrow": "0x1111111111111111111111111111111111111111",
+      "minCollateralRatioBps": 10200
+    },
+    {
+      "name": "Unykorn EUR",
+      "symbol": "EURx",
+      "decimals": 6,
+      "currencyCode": "EUR",
+      "collateralType": "cash",
+      "jurisdiction": "EU",
+      "policyURI": "ipfs://YOUR-POLICY-CID",
+      "lawEnforcementEscrow": "0x2222222222222222222222222222222222222222",
+      "minCollateralRatioBps": 10000
+    }
+  ]
+}

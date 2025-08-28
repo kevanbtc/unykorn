@@ -1,0 +1,20 @@
+name: Bug report
+description: File a bug report for UNYKORN ATLAS
+labels: [bug]
+body:
+  - type: textarea
+    id: describe
+    attributes:
+      label: What happened?
+      description: Describe the bug and expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include commands, inputs, and logs
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit SHA
