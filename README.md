@@ -28,3 +28,7 @@ This repository contains example Solidity smart contracts for an NFT marketplace
    ```
 
 Copy `.env.template` to `.env` and fill in your RPC URL and deployer private key for network configuration.
+
+## Security & Audit
+
+See the [Audit and Appraisal Report](docs/AUDIT_AND_APPRAISAL.md) for security findings, compliance guidance, and value assessment.
