@@ -1,21 +1,25 @@
 {
   "name": "unykorn",
   "version": "1.0.0",
-  "description": "This repository contains example Solidity smart contracts for an NFT marketplace with staking functionality. The contracts demonstrate how to list ERC‑731 tokens for sale and allow holders to stake their NFTs to earn rewards.",
+  "description": "Cross-chain token launch factory",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf cache artifacts",
+    "compile": "hardhat compile",
+    "test": "hardhat test --parallel",
+    "coverage": "hardhat coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
     "@openzeppelin/contracts": "^5.4.0",
-    "chai": "^6.0.1",
-    "ethers": "^5.8.0",
+    "@openzeppelin/contracts-upgradeable": "^5.4.0",
+    "@openzeppelin/hardhat-upgrades": "^3.9.1",
+    "ethers": "^6.14.0",
     "hardhat": "^2.26.1",
-    "solc": "^0.8.30"
+    "solc": "0.8.24",
+    "solidity-coverage": "^0.8.5"
   }
 }
