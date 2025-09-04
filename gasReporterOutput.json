@@ -955,10 +955,26 @@
     "contract": "VTV",
     "method": "transfer",
     "fnSig": "transfer(address,uint256)",
-    "intrinsicGas": [],
-    "callData": [],
-    "gasData": [],
-    "numberOfCalls": 0
+    "intrinsicGas": [
+     21644,
+     21632,
+     21644
+    ],
+    "callData": [
+     0,
+     0,
+     0
+    ],
+    "gasData": [
+     53809,
+     53821,
+     53821
+    ],
+    "numberOfCalls": 3,
+    "executionGasAverage": 53817,
+    "calldataGasAverage": 0,
+    "min": 53809,
+    "max": 53821
    },
    "VTV_23b872dd": {
     "key": "23b872dd",
@@ -988,6 +1004,270 @@
     "contract": "VTV",
     "method": "unpause",
     "fnSig": "unpause()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_a217fddf": {
+    "key": "a217fddf",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "DEFAULT_ADMIN_ROLE",
+    "fnSig": "DEFAULT_ADMIN_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_a3b0b5a3": {
+    "key": "a3b0b5a3",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "DEPOSITOR_ROLE",
+    "fnSig": "DEPOSITOR_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_0c323821": {
+    "key": "0c323821",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "MAX_LTV_RATIO",
+    "fnSig": "MAX_LTV_RATIO()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_5e5a24a4": {
+    "key": "5e5a24a4",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "VAULT_MANAGER_ROLE",
+    "fnSig": "VAULT_MANAGER_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_0a2642bf": {
+    "key": "0a2642bf",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "allocations",
+    "fnSig": "allocations(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_39e59945": {
+    "key": "39e59945",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "assetToIndex",
+    "fnSig": "assetToIndex(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_ca93dfac": {
+    "key": "ca93dfac",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "currentLtvRatio",
+    "fnSig": "currentLtvRatio()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_b6b55f25": {
+    "key": "b6b55f25",
+    "isCall": false,
+    "contract": "AssetVault",
+    "method": "deposit",
+    "fnSig": "deposit(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_deabf151": {
+    "key": "deabf151",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "depositorLockUntil",
+    "fnSig": "depositorLockUntil(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_a0c701ad": {
+    "key": "a0c701ad",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "depositorShares",
+    "fnSig": "depositorShares(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_5a5804b3": {
+    "key": "5a5804b3",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "getAllocation",
+    "fnSig": "getAllocation(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_248a9ca3": {
+    "key": "248a9ca3",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "getRoleAdmin",
+    "fnSig": "getRoleAdmin(bytes32)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_ff6adfa4": {
+    "key": "ff6adfa4",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "getVaultMetrics",
+    "fnSig": "getVaultMetrics()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_2f2ff15d": {
+    "key": "2f2ff15d",
+    "isCall": false,
+    "contract": "AssetVault",
+    "method": "grantRole",
+    "fnSig": "grantRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_91d14854": {
+    "key": "91d14854",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "hasRole",
+    "fnSig": "hasRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_36568abe": {
+    "key": "36568abe",
+    "isCall": false,
+    "contract": "AssetVault",
+    "method": "renounceRole",
+    "fnSig": "renounceRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_d547741f": {
+    "key": "d547741f",
+    "isCall": false,
+    "contract": "AssetVault",
+    "method": "revokeRole",
+    "fnSig": "revokeRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_1503c78a": {
+    "key": "1503c78a",
+    "isCall": false,
+    "contract": "AssetVault",
+    "method": "setAssetAllocation",
+    "fnSig": "setAssetAllocation(address,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_01ffc9a7": {
+    "key": "01ffc9a7",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "supportsInterface",
+    "fnSig": "supportsInterface(bytes4)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_55a373d6": {
+    "key": "55a373d6",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "tokenContract",
+    "fnSig": "tokenContract()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_3a98ef39": {
+    "key": "3a98ef39",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "totalShares",
+    "fnSig": "totalShares()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_afbc74b9": {
+    "key": "afbc74b9",
+    "isCall": true,
+    "contract": "AssetVault",
+    "method": "totalVaultValue",
+    "fnSig": "totalVaultValue()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_5c12cd4d": {
+    "key": "5c12cd4d",
+    "isCall": false,
+    "contract": "AssetVault",
+    "method": "useLeverage",
+    "fnSig": "useLeverage(uint256,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "AssetVault_2e1a7d4d": {
+    "key": "2e1a7d4d",
+    "isCall": false,
+    "contract": "AssetVault",
+    "method": "withdraw",
+    "fnSig": "withdraw(uint256)",
     "intrinsicGas": [],
     "callData": [],
     "gasData": [],
@@ -1422,6 +1702,996 @@
     "gasData": [],
     "numberOfCalls": 0
    },
+   "POCBeacons_45091416": {
+    "key": "45091416",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "lastCheckinTime",
+    "fnSig": "lastCheckinTime(address,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_20a51ff2": {
+    "key": "20a51ff2",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "BEACON_MANAGER_ROLE",
+    "fnSig": "BEACON_MANAGER_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_a217fddf": {
+    "key": "a217fddf",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "DEFAULT_ADMIN_ROLE",
+    "fnSig": "DEFAULT_ADMIN_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_547d4479": {
+    "key": "547d4479",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "GEO_RADIUS_LIMIT",
+    "fnSig": "GEO_RADIUS_LIMIT()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_ccbb97f0": {
+    "key": "ccbb97f0",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "MAX_DAILY_CHECKINS",
+    "fnSig": "MAX_DAILY_CHECKINS()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_c8483b2f": {
+    "key": "c8483b2f",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "MIN_CHECKIN_INTERVAL",
+    "fnSig": "MIN_CHECKIN_INTERVAL()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_f5b541a6": {
+    "key": "f5b541a6",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "OPERATOR_ROLE",
+    "fnSig": "OPERATOR_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_67fdf789": {
+    "key": "67fdf789",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "beacons",
+    "fnSig": "beacons(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_8b05ef6d": {
+    "key": "8b05ef6d",
+    "isCall": false,
+    "contract": "POCBeacons",
+    "method": "createBeacon",
+    "fnSig": "createBeacon(string,int256,int256,uint256,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_4d4b97ea": {
+    "key": "4d4b97ea",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "dailyCheckinCount",
+    "fnSig": "dailyCheckinCount(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_6ed5a775": {
+    "key": "6ed5a775",
+    "isCall": false,
+    "contract": "POCBeacons",
+    "method": "emergencyCheckin",
+    "fnSig": "emergencyCheckin(address,uint256,string)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_90caecc2": {
+    "key": "90caecc2",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "getBeacon",
+    "fnSig": "getBeacon(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_a16295b1": {
+    "key": "a16295b1",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "getDailyStats",
+    "fnSig": "getDailyStats(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_248a9ca3": {
+    "key": "248a9ca3",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "getRoleAdmin",
+    "fnSig": "getRoleAdmin(bytes32)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_6916e319": {
+    "key": "6916e319",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "getUserCheckins",
+    "fnSig": "getUserCheckins(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_2f2ff15d": {
+    "key": "2f2ff15d",
+    "isCall": false,
+    "contract": "POCBeacons",
+    "method": "grantRole",
+    "fnSig": "grantRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_91d14854": {
+    "key": "91d14854",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "hasRole",
+    "fnSig": "hasRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_de743487": {
+    "key": "de743487",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "lastCheckinDate",
+    "fnSig": "lastCheckinDate(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_15efb66e": {
+    "key": "15efb66e",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "nextBeaconId",
+    "fnSig": "nextBeaconId()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_c3d03102": {
+    "key": "c3d03102",
+    "isCall": false,
+    "contract": "POCBeacons",
+    "method": "recordCheckin",
+    "fnSig": "recordCheckin(uint256,string,int256,int256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_36568abe": {
+    "key": "36568abe",
+    "isCall": false,
+    "contract": "POCBeacons",
+    "method": "renounceRole",
+    "fnSig": "renounceRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_d547741f": {
+    "key": "d547741f",
+    "isCall": false,
+    "contract": "POCBeacons",
+    "method": "revokeRole",
+    "fnSig": "revokeRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_99152b13": {
+    "key": "99152b13",
+    "isCall": false,
+    "contract": "POCBeacons",
+    "method": "setBeaconActive",
+    "fnSig": "setBeaconActive(uint256,bool)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_01ffc9a7": {
+    "key": "01ffc9a7",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "supportsInterface",
+    "fnSig": "supportsInterface(bytes4)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_fc0c546a": {
+    "key": "fc0c546a",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "token",
+    "fnSig": "token()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "POCBeacons_553eec63": {
+    "key": "553eec63",
+    "isCall": true,
+    "contract": "POCBeacons",
+    "method": "userCheckins",
+    "fnSig": "userCheckins(address,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_a217fddf": {
+    "key": "a217fddf",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "DEFAULT_ADMIN_ROLE",
+    "fnSig": "DEFAULT_ADMIN_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_b3d35839": {
+    "key": "b3d35839",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "MERCHANT_ROLE",
+    "fnSig": "MERCHANT_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_f5b541a6": {
+    "key": "f5b541a6",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "OPERATOR_ROLE",
+    "fnSig": "OPERATOR_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_bf76c0ef": {
+    "key": "bf76c0ef",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "addMerchant",
+    "fnSig": "addMerchant(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_43542f10": {
+    "key": "43542f10",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "createOffer",
+    "fnSig": "createOffer(uint256,string)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_0b5e1f3f": {
+    "key": "0b5e1f3f",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "deactivateOffer",
+    "fnSig": "deactivateOffer(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_b444bba5": {
+    "key": "b444bba5",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "defaultCommission",
+    "fnSig": "defaultCommission()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_ab0dc99a": {
+    "key": "ab0dc99a",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "directReferrer",
+    "fnSig": "directReferrer(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_4579268a": {
+    "key": "4579268a",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "getOffer",
+    "fnSig": "getOffer(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_41a0894d": {
+    "key": "41a0894d",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "getReferrals",
+    "fnSig": "getReferrals(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_248a9ca3": {
+    "key": "248a9ca3",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "getRoleAdmin",
+    "fnSig": "getRoleAdmin(bytes32)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_2f2ff15d": {
+    "key": "2f2ff15d",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "grantRole",
+    "fnSig": "grantRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_91d14854": {
+    "key": "91d14854",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "hasRole",
+    "fnSig": "hasRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_d0035d7c": {
+    "key": "d0035d7c",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "isHustler",
+    "fnSig": "isHustler(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_5f5d0655": {
+    "key": "5f5d0655",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "nextOfferId",
+    "fnSig": "nextOfferId()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_8a72ea6a": {
+    "key": "8a72ea6a",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "offers",
+    "fnSig": "offers(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_3013ce29": {
+    "key": "3013ce29",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "paymentToken",
+    "fnSig": "paymentToken()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_ae77c237": {
+    "key": "ae77c237",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "purchase",
+    "fnSig": "purchase(uint256,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_e697b5d8": {
+    "key": "e697b5d8",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "referrals",
+    "fnSig": "referrals(address,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_36568abe": {
+    "key": "36568abe",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "renounceRole",
+    "fnSig": "renounceRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_d547741f": {
+    "key": "d547741f",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "revokeRole",
+    "fnSig": "revokeRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_9b7fbd9e": {
+    "key": "9b7fbd9e",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "setHustlerStatus",
+    "fnSig": "setHustlerStatus(address,bool)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_01ffc9a7": {
+    "key": "01ffc9a7",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "supportsInterface",
+    "fnSig": "supportsInterface(bytes4)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_7029fee8": {
+    "key": "7029fee8",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "territoryPoolBalance",
+    "fnSig": "territoryPoolBalance(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_fc0c546a": {
+    "key": "fc0c546a",
+    "isCall": true,
+    "contract": "RevVault",
+    "method": "token",
+    "fnSig": "token()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "RevVault_9f904270": {
+    "key": "9f904270",
+    "isCall": false,
+    "contract": "RevVault",
+    "method": "updateCommissionStructure",
+    "fnSig": "updateCommissionStructure(uint256,uint256,uint256,uint256,uint256,uint256,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_9a9410e1": {
+    "key": "9a9410e1",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "ADVOCATE_COMMISSION",
+    "fnSig": "ADVOCATE_COMMISSION()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_0a5a3312": {
+    "key": "0a5a3312",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "ADVOCATE_ROLE",
+    "fnSig": "ADVOCATE_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_029793ec": {
+    "key": "029793ec",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "BROKER_ROLE",
+    "fnSig": "BROKER_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_a217fddf": {
+    "key": "a217fddf",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "DEFAULT_ADMIN_ROLE",
+    "fnSig": "DEFAULT_ADMIN_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_829f40f7": {
+    "key": "829f40f7",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "FOUNDING_BROKER_TARGET",
+    "fnSig": "FOUNDING_BROKER_TARGET()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_45647da4": {
+    "key": "45647da4",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "HUSTLER_COMMISSION",
+    "fnSig": "HUSTLER_COMMISSION()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_24ae93ca": {
+    "key": "24ae93ca",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "HUSTLER_ROLE",
+    "fnSig": "HUSTLER_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_75bbaf91": {
+    "key": "75bbaf91",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "OVERRIDE_COMMISSION",
+    "fnSig": "OVERRIDE_COMMISSION()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_14d0d560": {
+    "key": "14d0d560",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "addFoundingBroker",
+    "fnSig": "addFoundingBroker(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_0c3ce10e": {
+    "key": "0c3ce10e",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "createEarlyPack",
+    "fnSig": "createEarlyPack(uint256,uint256,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_172af03f": {
+    "key": "172af03f",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "deactivateEarlyPack",
+    "fnSig": "deactivateEarlyPack(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_4b931f13": {
+    "key": "4b931f13",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "downline",
+    "fnSig": "downline(address,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_3f12b07c": {
+    "key": "3f12b07c",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "earlyPacks",
+    "fnSig": "earlyPacks(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_ac76a88a": {
+    "key": "ac76a88a",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "getDownline",
+    "fnSig": "getDownline(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_e77febbd": {
+    "key": "e77febbd",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "getEarlyPack",
+    "fnSig": "getEarlyPack(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_248a9ca3": {
+    "key": "248a9ca3",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "getRoleAdmin",
+    "fnSig": "getRoleAdmin(bytes32)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_1054b302": {
+    "key": "1054b302",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "getSalesHistory",
+    "fnSig": "getSalesHistory(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_c23f85d6": {
+    "key": "c23f85d6",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "getStats",
+    "fnSig": "getStats(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_41274f46": {
+    "key": "41274f46",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "getTokenLockInfo",
+    "fnSig": "getTokenLockInfo(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_2f2ff15d": {
+    "key": "2f2ff15d",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "grantRole",
+    "fnSig": "grantRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_91d14854": {
+    "key": "91d14854",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "hasRole",
+    "fnSig": "hasRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_5eb7413a": {
+    "key": "5eb7413a",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "lockedTokens",
+    "fnSig": "lockedTokens(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_eb703811": {
+    "key": "eb703811",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "nextPackId",
+    "fnSig": "nextPackId()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_deb077b9": {
+    "key": "deb077b9",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "nextSaleId",
+    "fnSig": "nextSaleId()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_3013ce29": {
+    "key": "3013ce29",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "paymentToken",
+    "fnSig": "paymentToken()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_d39ec3f5": {
+    "key": "d39ec3f5",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "promoteToHustler",
+    "fnSig": "promoteToHustler(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_41481db2": {
+    "key": "41481db2",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "purchaseEarlyPack",
+    "fnSig": "purchaseEarlyPack(uint256,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_36568abe": {
+    "key": "36568abe",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "renounceRole",
+    "fnSig": "renounceRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_d547741f": {
+    "key": "d547741f",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "revokeRole",
+    "fnSig": "revokeRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_b5f522f7": {
+    "key": "b5f522f7",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "sales",
+    "fnSig": "sales(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_27fe8b1f": {
+    "key": "27fe8b1f",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "salesHistory",
+    "fnSig": "salesHistory(address,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_6789fa1d": {
+    "key": "6789fa1d",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "salesStats",
+    "fnSig": "salesStats(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_01ffc9a7": {
+    "key": "01ffc9a7",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "supportsInterface",
+    "fnSig": "supportsInterface(bytes4)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_fc0c546a": {
+    "key": "fc0c546a",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "token",
+    "fnSig": "token()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_76b467b7": {
+    "key": "76b467b7",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "unlockTime",
+    "fnSig": "unlockTime(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_f968f493": {
+    "key": "f968f493",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "unlockTokens",
+    "fnSig": "unlockTokens()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_0e3bd352": {
+    "key": "0e3bd352",
+    "isCall": true,
+    "contract": "SalesForceManager",
+    "method": "upline",
+    "fnSig": "upline(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "SalesForceManager_c1075329": {
+    "key": "c1075329",
+    "isCall": false,
+    "contract": "SalesForceManager",
+    "method": "withdrawFunds",
+    "fnSig": "withdrawFunds(address,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
    "TokenERC20_282c51f3": {
     "key": "282c51f3",
     "isCall": true,
@@ -1466,6 +2736,17 @@
     "gasData": [],
     "numberOfCalls": 0
    },
+   "TokenERC20_3aa0666a": {
+    "key": "3aa0666a",
+    "isCall": true,
+    "contract": "TokenERC20",
+    "method": "MAX_BURN_RATE",
+    "fnSig": "MAX_BURN_RATE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
    "TokenERC20_d5391393": {
     "key": "d5391393",
     "isCall": true,
@@ -1499,12 +2780,34 @@
     "gasData": [],
     "numberOfCalls": 0
    },
+   "TokenERC20_8f296759": {
+    "key": "8f296759",
+    "isCall": true,
+    "contract": "TokenERC20",
+    "method": "UTILITY_ROLE",
+    "fnSig": "UTILITY_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
    "TokenERC20_79ba5097": {
     "key": "79ba5097",
     "isCall": false,
     "contract": "TokenERC20",
     "method": "acceptOwnership",
     "fnSig": "acceptOwnership()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "TokenERC20_59ff03c3": {
+    "key": "59ff03c3",
+    "isCall": false,
+    "contract": "TokenERC20",
+    "method": "addCommissionEarning",
+    "fnSig": "addCommissionEarning(address,uint256)",
     "intrinsicGas": [],
     "callData": [],
     "gasData": [],
@@ -1554,6 +2857,28 @@
     "gasData": [],
     "numberOfCalls": 0
    },
+   "TokenERC20_bed99850": {
+    "key": "bed99850",
+    "isCall": true,
+    "contract": "TokenERC20",
+    "method": "burnRate",
+    "fnSig": "burnRate()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "TokenERC20_629d5368": {
+    "key": "629d5368",
+    "isCall": true,
+    "contract": "TokenERC20",
+    "method": "commissionEarnings",
+    "fnSig": "commissionEarnings(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
    "TokenERC20_313ce567": {
     "key": "313ce567",
     "isCall": true,
@@ -1593,10 +2918,32 @@
     "contract": "TokenERC20",
     "method": "grantRole",
     "fnSig": "grantRole(bytes32,address)",
-    "intrinsicGas": [],
-    "callData": [],
-    "gasData": [],
-    "numberOfCalls": 0
+    "intrinsicGas": [
+     21932,
+     21932,
+     21932,
+     21944,
+     21932
+    ],
+    "callData": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "gasData": [
+     29505,
+     51742,
+     51742,
+     51742,
+     51754
+    ],
+    "numberOfCalls": 5,
+    "executionGasAverage": 47297,
+    "calldataGasAverage": 0,
+    "min": 29505,
+    "max": 51754
    },
    "TokenERC20_91d14854": {
     "key": "91d14854",
@@ -1616,22 +2963,30 @@
     "method": "initialize",
     "fnSig": "initialize(string,string)",
     "intrinsicGas": [
-     21976,
-     21976
+     22000
     ],
     "callData": [
-     0,
      0
     ],
     "gasData": [
-     336219,
-     336219
+     361044
     ],
-    "numberOfCalls": 2,
-    "executionGasAverage": 336219,
+    "numberOfCalls": 1,
+    "executionGasAverage": 361044,
     "calldataGasAverage": 0,
-    "min": 336219,
-    "max": 336219
+    "min": 361044,
+    "max": 361044
+   },
+   "TokenERC20_8249bb33": {
+    "key": "8249bb33",
+    "isCall": true,
+    "contract": "TokenERC20",
+    "method": "lastPocTime",
+    "fnSig": "lastPocTime(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
    },
    "TokenERC20_790ca413": {
     "key": "790ca413",
@@ -1732,6 +3087,39 @@
     "gasData": [],
     "numberOfCalls": 0
    },
+   "TokenERC20_23e6d39c": {
+    "key": "23e6d39c",
+    "isCall": false,
+    "contract": "TokenERC20",
+    "method": "pocCheckin",
+    "fnSig": "pocCheckin()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "TokenERC20_d8c83bb3": {
+    "key": "d8c83bb3",
+    "isCall": true,
+    "contract": "TokenERC20",
+    "method": "pocStreaks",
+    "fnSig": "pocStreaks(address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "TokenERC20_38fe3b6a": {
+    "key": "38fe3b6a",
+    "isCall": true,
+    "contract": "TokenERC20",
+    "method": "poiRecords",
+    "fnSig": "poiRecords(bytes32)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
    "TokenERC20_52d1902d": {
     "key": "52d1902d",
     "isCall": true,
@@ -1742,6 +3130,27 @@
     "callData": [],
     "gasData": [],
     "numberOfCalls": 0
+   },
+   "TokenERC20_9d42ef62": {
+    "key": "9d42ef62",
+    "isCall": false,
+    "contract": "TokenERC20",
+    "method": "recordPoi",
+    "fnSig": "recordPoi(address,address,bytes32)",
+    "intrinsicGas": [
+     22300
+    ],
+    "callData": [
+     0
+    ],
+    "gasData": [
+     50159
+    ],
+    "numberOfCalls": 1,
+    "executionGasAverage": 50159,
+    "calldataGasAverage": 0,
+    "min": 50159,
+    "max": 50159
    },
    "TokenERC20_715018a6": {
     "key": "715018a6",
@@ -1771,6 +3180,17 @@
     "contract": "TokenERC20",
     "method": "revokeRole",
     "fnSig": "revokeRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "TokenERC20_189d165e": {
+    "key": "189d165e",
+    "isCall": false,
+    "contract": "TokenERC20",
+    "method": "setBurnRate",
+    "fnSig": "setBurnRate(uint256)",
     "intrinsicGas": [],
     "callData": [],
     "gasData": [],
@@ -1815,23 +3235,10 @@
     "contract": "TokenERC20",
     "method": "transfer",
     "fnSig": "transfer(address,uint256)",
-    "intrinsicGas": [
-     21572,
-     21572
-    ],
-    "callData": [
-     0,
-     0
-    ],
-    "gasData": [
-     56009,
-     56009
-    ],
-    "numberOfCalls": 2,
-    "executionGasAverage": 56009,
-    "calldataGasAverage": 0,
-    "min": 56009,
-    "max": 56009
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
    },
    "TokenERC20_23b872dd": {
     "key": "23b872dd",
@@ -1876,6 +3283,380 @@
     "callData": [],
     "gasData": [],
     "numberOfCalls": 0
+   },
+   "TokenERC20_0c8cd936": {
+    "key": "0c8cd936",
+    "isCall": false,
+    "contract": "TokenERC20",
+    "method": "useForUtility",
+    "fnSig": "useForUtility(uint256,string)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_43859632": {
+    "key": "43859632",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "hasVoted",
+    "fnSig": "hasVoted(uint256,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_a217fddf": {
+    "key": "a217fddf",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "DEFAULT_ADMIN_ROLE",
+    "fnSig": "DEFAULT_ADMIN_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_37f135d7": {
+    "key": "37f135d7",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "EXECUTION_DELAY",
+    "fnSig": "EXECUTION_DELAY()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_07bd0265": {
+    "key": "07bd0265",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "EXECUTOR_ROLE",
+    "fnSig": "EXECUTOR_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_a6c26603": {
+    "key": "a6c26603",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "PROPOSAL_THRESHOLD",
+    "fnSig": "PROPOSAL_THRESHOLD()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_8f61f4f5": {
+    "key": "8f61f4f5",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "PROPOSER_ROLE",
+    "fnSig": "PROPOSER_ROLE()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_5e510b60": {
+    "key": "5e510b60",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "QUORUM_THRESHOLD",
+    "fnSig": "QUORUM_THRESHOLD()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_b1610d7e": {
+    "key": "b1610d7e",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "VOTING_PERIOD",
+    "fnSig": "VOTING_PERIOD()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_092a6084": {
+    "key": "092a6084",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "addSigner",
+    "fnSig": "addSigner(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_f61ebc36": {
+    "key": "f61ebc36",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "assetVault",
+    "fnSig": "assetVault()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_e0a8f6f5": {
+    "key": "e0a8f6f5",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "cancelProposal",
+    "fnSig": "cancelProposal(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_0d61b519": {
+    "key": "0d61b519",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "executeProposal",
+    "fnSig": "executeProposal(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_61a0850e": {
+    "key": "61a0850e",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "executionSignatures",
+    "fnSig": "executionSignatures(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_c7f758a8": {
+    "key": "c7f758a8",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "getProposal",
+    "fnSig": "getProposal(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_248a9ca3": {
+    "key": "248a9ca3",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "getRoleAdmin",
+    "fnSig": "getRoleAdmin(bytes32)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_7eba5573": {
+    "key": "7eba5573",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "getVoteWeight",
+    "fnSig": "getVoteWeight(uint256,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_2f2ff15d": {
+    "key": "2f2ff15d",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "grantRole",
+    "fnSig": "grantRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_91d14854": {
+    "key": "91d14854",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "hasRole",
+    "fnSig": "hasRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_c901b2bb": {
+    "key": "c901b2bb",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "hasSignedExecution",
+    "fnSig": "hasSignedExecution(uint256,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_80dd1ec0": {
+    "key": "80dd1ec0",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "isSigner",
+    "fnSig": "isSigner(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_2ab09d14": {
+    "key": "2ab09d14",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "nextProposalId",
+    "fnSig": "nextProposalId()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_013cf08b": {
+    "key": "013cf08b",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "proposals",
+    "fnSig": "proposals(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_92298e98": {
+    "key": "92298e98",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "propose",
+    "fnSig": "propose(uint8,string,bytes)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_36568abe": {
+    "key": "36568abe",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "renounceRole",
+    "fnSig": "renounceRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_3155b341": {
+    "key": "3155b341",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "requiredSignatures",
+    "fnSig": "requiredSignatures(bytes32)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_028882b0": {
+    "key": "028882b0",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "revVault",
+    "fnSig": "revVault()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_d547741f": {
+    "key": "d547741f",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "revokeRole",
+    "fnSig": "revokeRole(bytes32,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_d8952a49": {
+    "key": "d8952a49",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "setContracts",
+    "fnSig": "setContracts(address,address)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_24cf6516": {
+    "key": "24cf6516",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "setSignatureRequirement",
+    "fnSig": "setSignatureRequirement(bytes32,uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_e735ea8d": {
+    "key": "e735ea8d",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "signExecution",
+    "fnSig": "signExecution(uint256)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_01ffc9a7": {
+    "key": "01ffc9a7",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "supportsInterface",
+    "fnSig": "supportsInterface(bytes4)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_fc0c546a": {
+    "key": "fc0c546a",
+    "isCall": true,
+    "contract": "UnykornGovernance",
+    "method": "token",
+    "fnSig": "token()",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
+   },
+   "UnykornGovernance_c9d27afe": {
+    "key": "c9d27afe",
+    "isCall": false,
+    "contract": "UnykornGovernance",
+    "method": "vote",
+    "fnSig": "vote(uint256,bool)",
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
    }
   },
   "deployments": [
@@ -1898,6 +3679,22 @@
     "name": "AffiliateRouter",
     "gasData": [],
     "callData": []
+   },
+   {
+    "name": "AssetVault",
+    "gasData": [
+     1253769,
+     1253769
+    ],
+    "callData": [
+     0,
+     0
+    ],
+    "executionGasAverage": 1253769,
+    "calldataGasAverage": 0,
+    "min": 1253769,
+    "max": 1253769,
+    "percent": 4.2
    },
    {
     "name": "AuditTrail",
@@ -1980,7 +3777,37 @@
     "callData": []
    },
    {
+    "name": "evm/AssetVault.sol:ITokenERC20",
+    "gasData": [],
+    "callData": []
+   },
+   {
+    "name": "evm/POCBeacons.sol:ITokenERC20",
+    "gasData": [],
+    "callData": []
+   },
+   {
+    "name": "evm/RevVault.sol:ITokenERC20",
+    "gasData": [],
+    "callData": []
+   },
+   {
+    "name": "evm/SalesForceManager.sol:ITokenERC20",
+    "gasData": [],
+    "callData": []
+   },
+   {
+    "name": "evm/UnykornGovernance.sol:ITokenERC20",
+    "gasData": [],
+    "callData": []
+   },
+   {
     "name": "IAccessControl",
+    "gasData": [],
+    "callData": []
+   },
+   {
+    "name": "IAssetVault",
     "gasData": [],
     "callData": []
    },
@@ -2080,6 +3907,11 @@
     "callData": []
    },
    {
+    "name": "IRevVault",
+    "gasData": [],
+    "callData": []
+   },
+   {
     "name": "IUniswapV2Router02",
     "gasData": [],
     "callData": []
@@ -2160,6 +3992,22 @@
     "callData": []
    },
    {
+    "name": "POCBeacons",
+    "gasData": [
+     1686817,
+     1686817
+    ],
+    "callData": [
+     0,
+     0
+    ],
+    "executionGasAverage": 1686817,
+    "calldataGasAverage": 0,
+    "min": 1686817,
+    "max": 1686817,
+    "percent": 5.6
+   },
+   {
     "name": "ReentrancyGuard",
     "gasData": [],
     "callData": []
@@ -2170,6 +4018,22 @@
     "callData": []
    },
    {
+    "name": "RevVault",
+    "gasData": [
+     1774627,
+     1774627
+    ],
+    "callData": [
+     0,
+     0
+    ],
+    "executionGasAverage": 1774627,
+    "calldataGasAverage": 0,
+    "min": 1774627,
+    "max": 1774627,
+    "percent": 5.9
+   },
+   {
     "name": "SafeCast",
     "gasData": [],
     "callData": []
@@ -2178,6 +4042,22 @@
     "name": "SafeERC20",
     "gasData": [],
     "callData": []
+   },
+   {
+    "name": "SalesForceManager",
+    "gasData": [
+     1962553,
+     1962553
+    ],
+    "callData": [
+     0,
+     0
+    ],
+    "executionGasAverage": 1962553,
+    "calldataGasAverage": 0,
+    "min": 1962553,
+    "max": 1962553,
+    "percent": 6.5
    },
    {
     "name": "SignedMath",
@@ -2202,22 +4082,34 @@
    {
     "name": "TokenERC20",
     "gasData": [
-     2181575,
-     2181575,
-     2181575,
-     2181575
+     2688597,
+     2688597
     ],
     "callData": [
      0,
-     0,
+     0
+    ],
+    "executionGasAverage": 2688597,
+    "calldataGasAverage": 0,
+    "min": 2688597,
+    "max": 2688597,
+    "percent": 9
+   },
+   {
+    "name": "UnykornGovernance",
+    "gasData": [
+     2006664,
+     2006664
+    ],
+    "callData": [
      0,
      0
     ],
-    "executionGasAverage": 2181575,
+    "executionGasAverage": 2006664,
     "calldataGasAverage": 0,
-    "min": 2181575,
-    "max": 2181575,
-    "percent": 7.3
+    "min": 2006664,
+    "max": 2006664,
+    "percent": 6.7
    },
    {
     "name": "UUPSUpgradeable",
@@ -2236,8 +4128,19 @@
    },
    {
     "name": "VTV",
-    "gasData": [],
-    "callData": []
+    "gasData": [
+     765198,
+     765198
+    ],
+    "callData": [
+     0,
+     0
+    ],
+    "executionGasAverage": 765198,
+    "calldataGasAverage": 0,
+    "min": 765198,
+    "max": 765198,
+    "percent": 2.6
    }
   ]
  }

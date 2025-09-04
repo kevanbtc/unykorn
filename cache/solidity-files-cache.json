@@ -1369,8 +1369,8 @@
       ]
     },
     "/home/runner/work/unykorn/unykorn/contracts/evm/TokenERC20.sol": {
-      "lastModificationDate": 1756980748981,
-      "contentHash": "1021c31f154fe8a2a0e89837bf054c13",
+      "lastModificationDate": 1756987451109,
+      "contentHash": "c6acd2eebe5ea54d6f5896f402dfec0b",
       "sourceName": "contracts/evm/TokenERC20.sol",
       "solcConfig": {
         "version": "0.8.24",
@@ -2642,6 +2642,216 @@
       ],
       "artifacts": [
         "MerkleLib"
+      ]
+    },
+    "/home/runner/work/unykorn/unykorn/contracts/evm/UnykornGovernance.sol": {
+      "lastModificationDate": 1756987408875,
+      "contentHash": "41d2e67da4f68e0e42e191204170637d",
+      "sourceName": "contracts/evm/UnykornGovernance.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/access/AccessControl.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "IAssetVault",
+        "IRevVault",
+        "ITokenERC20",
+        "UnykornGovernance"
+      ]
+    },
+    "/home/runner/work/unykorn/unykorn/contracts/evm/SalesForceManager.sol": {
+      "lastModificationDate": 1756987430358,
+      "contentHash": "62240b69d66a8d8ff2036328c1a3e879",
+      "sourceName": "contracts/evm/SalesForceManager.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+        "@openzeppelin/contracts/access/AccessControl.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "ITokenERC20",
+        "SalesForceManager"
+      ]
+    },
+    "/home/runner/work/unykorn/unykorn/contracts/evm/RevVault.sol": {
+      "lastModificationDate": 1756987288385,
+      "contentHash": "0a6c6c4e1c09a8e36498d19149b92b10",
+      "sourceName": "contracts/evm/RevVault.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+        "@openzeppelin/contracts/access/AccessControl.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "ITokenERC20",
+        "RevVault"
+      ]
+    },
+    "/home/runner/work/unykorn/unykorn/contracts/evm/AssetVault.sol": {
+      "lastModificationDate": 1756987249832,
+      "contentHash": "b47d14fe9fd709d06191d9cf8cf6be14",
+      "sourceName": "contracts/evm/AssetVault.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+        "@openzeppelin/contracts/access/AccessControl.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "AssetVault",
+        "ITokenERC20"
+      ]
+    },
+    "/home/runner/work/unykorn/unykorn/contracts/evm/POCBeacons.sol": {
+      "lastModificationDate": 1756987321129,
+      "contentHash": "9781c1c290586d35422f48357b675884",
+      "sourceName": "contracts/evm/POCBeacons.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+        "@openzeppelin/contracts/access/AccessControl.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "ITokenERC20",
+        "POCBeacons"
       ]
     }
   }
