@@ -15,7 +15,7 @@ describe("TokenERC20", function () {
 
   it("mints initial supply to deployer", async function () {
     const bal = await token.balanceOf(owner.address);
-    expect(bal).to.equal(ethers.parseEther("1000000000"));
+    expect(bal).to.equal(ethers.parseEther("1000000000000")); // 1 trillion
   });
 
   it("enforces launch lock", async function () {
