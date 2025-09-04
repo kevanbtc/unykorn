@@ -14,15 +14,22 @@ This repository contains example Solidity smart contracts for an NFT marketplace
 
 ## Development
 
+For detailed build instructions, see [BUILD.md](BUILD.md).
+
+**Quick Start:**
 1. Install dependencies:
    ```bash
    npm install
    ```
 2. Compile contracts:
    ```bash
-   npx hardhat compile
+   npm run compile
    ```
-3. Deploy (example script):
+3. Run tests:
+   ```bash
+   npm run test
+   ```
+4. Deploy (example script):
    ```bash
    npx hardhat run scripts/deploy.js --network yourNetwork
    ```
