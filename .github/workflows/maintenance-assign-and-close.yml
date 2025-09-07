@@ -1,0 +1,61 @@
+name: Repo maintenance - assign and close
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  assign_and_close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign kevanbtc to all open PRs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const assignee = 'kevanbtc';
+            let page = 1;
+            while (true) {
+              const { data } = await github.rest.pulls.list({
+                owner, repo, state: 'open', per_page: 100, page
+              });
+              if (!data.length) break;
+              for (const pr of data) {
+                try {
+                  await github.rest.issues.addAssignees({
+                    owner, repo, issue_number: pr.number, assignees: [assignee]
+                  });
+                } catch (err) {
+                  core.warning(`Failed to assign #${pr.number}: ${err.message}`);
+                }
+              }
+              page++;
+            }
+      - name: Comment and close PR #54 in favor of #59
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const from = 54;
+            const to = 59;
+            try {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: from,
+                body: `Closing in favor of #${to}.`
+              });
+            } catch (e) {
+              core.warning(`Comment failed: ${e.message}`);
+            }
+            try {
+              await github.rest.issues.update({
+                owner, repo, issue_number: from, state: 'closed'
+              });
+            } catch (e) {
+              core.warning(`Close failed: ${e.message}`);
+            }
