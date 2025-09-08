@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Auto assign reviewers
-        uses: kentaro-m/auto-assign@v2
+        uses: kentaro-m/auto-assign@v1.3.2
         with:
           assignees: 'kevanbtc'
           reviewers: 'kevanbtc'
