@@ -1,16 +1,43 @@
-# Unykorn Contracts
+# Unykorn
 
-This repository contains example Solidity smart contracts for an NFT marketplace and staking functionality. Additional contracts showcase a simple token suite and subscription logic inspired by the V-CHANNEL specification.
+Cross-chain token launch factory with smart contracts for EVM and Solana blockchains.
 
-## Contracts
+## Repository Structure
 
-- `NFTMarketplace.sol` – list and purchase ERC‑721 tokens with a marketplace fee.
-- `NFTStaking.sol` – stake NFTs to earn ETH rewards over time.
-- `VTV.sol` – basic ERC‑20 utility token.
-- `VCHAN.sol` – governance token.
-- `VPOINT.sol` – soulbound loyalty points that cannot be transferred.
-- `SubscriptionVault.sol` – basic monthly subscription contract using an ERC‑20 token.
-- `AffiliateRouter.sol` – records and pays out referral commissions.
+```
+apps/        - frontend, backend, indexer and scheduled agents
+contracts/   - smart contracts for EVM and Solana
+  evm/       - Solidity contracts for Ethereum and EVM-compatible chains
+  solana/    - Rust contracts for Solana
+  shared/    - Shared utilities and libraries
+cli/         - command line tools for deployment and airdrops
+infra/       - docker-compose and CI stubs  
+samples/     - example CSV files for airdrops and allocations
+docs/        - documentation and specifications
+```
+
+## EVM Contracts
+
+Located in `contracts/evm/`:
+
+- `TokenERC20.sol` – upgradeable ERC‑20 token with permit and controlled mint/burn
+- `NFTMarketplace.sol` – list and purchase ERC‑721 tokens with a marketplace fee
+- `NFTStaking.sol` – stake NFTs to earn ETH rewards over time
+- `MemePass721.sol` – ERC‑721 NFT with royalties and pausing
+- `LiquidityHelper.sol` – liquidity management utilities
+- `VTV.sol` – basic ERC‑20 utility token
+- `VCHAN.sol` – governance token
+- `VPOINT.sol` – soulbound loyalty points that cannot be transferred
+- `SubscriptionVault.sol` – basic monthly subscription contract using an ERC‑20 token
+- `AffiliateRouter.sol` – records and pays out referral commissions
+- `AuditTrail.sol` – audit and compliance tracking
+
+## Solana Contracts
+
+Located in `contracts/solana/`:
+
+- `airdrop_dist` – Merkle-tree based airdrop distribution
+- `meme_token` – Token creation and management utilities
 
 ## Development
 
