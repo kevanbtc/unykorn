@@ -1,0 +1,54 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IRevVault",
+  "sourceName": "contracts/evm/UnykornGovernance.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "merchantPercentage",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "directCommission",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "teamOverride",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "poiBonus",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "territoryPool",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "platformFee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "burnPercentage",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateCommissionStructure",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
