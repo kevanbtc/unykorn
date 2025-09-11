@@ -1,0 +1,134 @@
+@import "tailwindcss";
+@import '@rainbow-me/rainbowkit/styles.css';
+
+:root {
+  /* Light theme colors */
+  --background: #fafafa;
+  --foreground: #171717;
+  --card: rgba(255, 255, 255, 0.15);
+  --card-foreground: #171717;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(99, 102, 241, 0.1);
+  --secondary-foreground: #6366f1;
+  --accent: rgba(139, 92, 246, 0.15);
+  --accent-foreground: #8b5cf6;
+  --muted: rgba(0, 0, 0, 0.05);
+  --muted-foreground: #6b7280;
+  --border: rgba(255, 255, 255, 0.2);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #6366f1;
+  
+  /* Glassmorphism specific */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --glass-highlight: rgba(255, 255, 255, 0.3);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Glass effect utilities */
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  --box-shadow-glass: var(--glass-shadow);
+  --color-glass-highlight: var(--glass-highlight);
+  
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Inconsolata, "Roboto Mono", monospace;
+  
+  /* Custom animations */
+  --animate-fade-in: fade-in 0.25s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-glass-hover: glass-hover 0.2s ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --card: rgba(255, 255, 255, 0.05);
+    --card-foreground: #ededed;
+    --primary: #8b5cf6;
+    --primary-foreground: #ffffff;
+    --secondary: rgba(139, 92, 246, 0.1);
+    --secondary-foreground: #a78bfa;
+    --accent: rgba(168, 85, 247, 0.15);
+    --accent-foreground: #c084fc;
+    --muted: rgba(255, 255, 255, 0.05);
+    --muted-foreground: #9ca3af;
+    --border: rgba(255, 255, 255, 0.1);
+    --input: rgba(255, 255, 255, 0.05);
+    --ring: #8b5cf6;
+    
+    /* Dark glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --glass-highlight: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glass-hover {
+  from { transform: scale(1); }
+  to { transform: scale(1.02); }
+}
+
+/* Glass morphism utility classes */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Base body styles */
+body {
+  background: var(--background);
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
