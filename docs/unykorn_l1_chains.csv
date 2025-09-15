@@ -1,0 +1,10 @@
+chain_id,name,symbol,rpc_url,block_explorer,status,native_token,bridge_contract,last_validated
+1,Ethereum,ETH,https://mainnet.infura.io/v3/YOUR_KEY,https://etherscan.io,active,ETH,0x0000000000000000000000000000000000000000,2024-01-15T10:30:00Z
+56,BNB Smart Chain,BNB,https://bsc-dataseed1.binance.org,https://bscscan.com,active,BNB,0x0000000000000000000000000000000000000001,2024-01-15T10:30:00Z
+137,Polygon,MATIC,https://polygon-rpc.com,https://polygonscan.com,active,MATIC,0x0000000000000000000000000000000000000002,2024-01-15T10:30:00Z
+250,Fantom,FTM,https://rpc.ftm.tools,https://ftmscan.com,active,FTM,0x0000000000000000000000000000000000000003,2024-01-15T10:30:00Z
+43114,Avalanche,AVAX,https://api.avax.network/ext/bc/C/rpc,https://snowtrace.io,active,AVAX,0x0000000000000000000000000000000000000004,2024-01-15T10:30:00Z
+42161,Arbitrum One,ETH,https://arb1.arbitrum.io/rpc,https://arbiscan.io,active,ETH,0x0000000000000000000000000000000000000005,2024-01-15T10:30:00Z
+10,Optimism,ETH,https://mainnet.optimism.io,https://optimistic.etherscan.io,active,ETH,0x0000000000000000000000000000000000000006,2024-01-15T10:30:00Z
+8453,Base,ETH,https://mainnet.base.org,https://basescan.org,active,ETH,0x0000000000000000000000000000000000000007,2024-01-15T10:30:00Z
+324,zkSync Era,ETH,https://mainnet.era.zksync.io,https://explorer.zksync.io,active,ETH,0x0000000000000000000000000000000000000008,2024-01-15T10:30:00Z

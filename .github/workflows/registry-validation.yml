@@ -1,0 +1,167 @@
+name: 🔍 Registry Validation
+
+on:
+  pull_request:
+    paths:
+      - 'exports/*.csv'
+      - 'scripts/validate_registry.py'
+  push:
+    branches: [ main ]
+    paths:
+      - 'exports/*.csv'
+      - 'scripts/validate_registry.py'
+  workflow_dispatch:
+
+jobs:
+  validate-registry:
+    name: Validate CSV Data & Merkle Proofs
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: 🔍 Validate CSV Structure & Data Integrity
+      run: |
+        echo "🔍 Running Unykorn Registry Validation..."
+        python3 scripts/validate_registry.py --exports-dir exports
+
+    - name: ✅ Verify Merkle Roots Generated
+      run: |
+        if [ ! -f "exports/MERKLE_ROOTS.json" ]; then
+          echo "❌ MERKLE_ROOTS.json was not generated!"
+          exit 1
+        fi
+        
+        echo "✅ MERKLE_ROOTS.json found and validated"
+        echo "📊 Registry Summary:"
+        cat exports/MERKLE_ROOTS.json | python3 -m json.tool
+
+    - name: 📋 Validate Required CSV Files
+      run: |
+        required_files=(
+          "exports/unykorn_l1_chains.csv"
+          "exports/unykorn_address_book.csv"
+        )
+        
+        for file in "${required_files[@]}"; do
+          if [ ! -f "$file" ]; then
+            echo "❌ Required file missing: $file"
+            exit 1
+          else
+            echo "✅ Found: $file ($(wc -l < "$file") lines)"
+          fi
+        done
+
+    - name: 🔐 Verify Cryptographic Integrity
+      run: |
+        echo "🔐 Verifying file hashes match Merkle proof metadata..."
+        
+        # Extract expected hashes from MERKLE_ROOTS.json
+        chains_expected=$(cat exports/MERKLE_ROOTS.json | python3 -c "
+        import json, sys
+        data = json.load(sys.stdin)
+        print(data['files']['unykorn_l1_chains.csv']['file_hash'])
+        ")
+        
+        address_expected=$(cat exports/MERKLE_ROOTS.json | python3 -c "
+        import json, sys
+        data = json.load(sys.stdin)
+        print(data['files']['unykorn_address_book.csv']['file_hash'])
+        ")
+        
+        # Compute actual hashes
+        chains_actual=$(shasum -a 256 exports/unykorn_l1_chains.csv | cut -d' ' -f1)
+        address_actual=$(shasum -a 256 exports/unykorn_address_book.csv | cut -d' ' -f1)
+        
+        echo "Chains CSV - Expected: $chains_expected"
+        echo "Chains CSV - Actual:   $chains_actual"
+        
+        if [ "$chains_expected" != "$chains_actual" ]; then
+          echo "❌ L1 chains CSV hash mismatch!"
+          exit 1
+        fi
+        
+        echo "Address Book - Expected: $address_expected"
+        echo "Address Book - Actual:   $address_actual"
+        
+        if [ "$address_expected" != "$address_actual" ]; then
+          echo "❌ Address book CSV hash mismatch!"
+          exit 1
+        fi
+        
+        echo "✅ All cryptographic integrity checks passed!"
+
+    - name: 📊 Generate Validation Report
+      run: |
+        echo "## 🔍 Registry Validation Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### ✅ Validation Results" >> $GITHUB_STEP_SUMMARY
+        echo "- CSV structure validation: **PASSED**" >> $GITHUB_STEP_SUMMARY
+        echo "- Data integrity checks: **PASSED**" >> $GITHUB_STEP_SUMMARY
+        echo "- Merkle proof generation: **PASSED**" >> $GITHUB_STEP_SUMMARY
+        echo "- Cryptographic verification: **PASSED**" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        echo "### 📊 Registry Statistics" >> $GITHUB_STEP_SUMMARY
+        chains_count=$(tail -n +2 exports/unykorn_l1_chains.csv | wc -l)
+        address_count=$(tail -n +2 exports/unykorn_address_book.csv | wc -l)
+        echo "- L1 Chains: **${chains_count}**" >> $GITHUB_STEP_SUMMARY
+        echo "- Verified Addresses: **${address_count}**" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        echo "### 🔐 Merkle Roots" >> $GITHUB_STEP_SUMMARY
+        echo '```json' >> $GITHUB_STEP_SUMMARY
+        cat exports/MERKLE_ROOTS.json >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
+
+  update-docs:
+    name: Update GitHub Pages
+    needs: validate-registry
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: 🔄 Regenerate Registry Data
+      run: |
+        python3 scripts/validate_registry.py --exports-dir exports
+
+    - name: 📋 Copy Registry Files to Docs
+      run: |
+        cp exports/*.csv docs/
+        cp exports/MERKLE_ROOTS.json docs/
+        echo "✅ Registry files copied to docs/ for GitHub Pages"
+
+    - name: 📤 Commit Updated Registry
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        if [ -n "$(git status --porcelain)" ]; then
+          git add docs/
+          git commit -m "🤖 Auto-update registry data and proofs
+
+          - Updated CSV files with latest data
+          - Regenerated Merkle proofs
+          - Updated GitHub Pages documentation
+          
+          Generated at: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          
+          git push
+          echo "✅ Registry updates committed and pushed"
+        else
+          echo "ℹ️  No changes detected in registry data"
+        fi
