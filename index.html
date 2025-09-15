@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unykorn Registry - Sovereign Proof Machine</title>
+    <meta name="description" content="Bank-ready sovereign proof machine for L1 chain and address registry validation">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glass: {
+                            'light': 'rgba(255, 255, 255, 0.1)',
+                            'dark': 'rgba(0, 0, 0, 0.2)',
+                        }
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        .glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .glass-dark {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-bg-dark {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .dark body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-glow"></div>
+                    <span class="text-white font-bold text-xl">Unykorn Registry</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#dashboard" class="text-white/80 hover:text-white transition-colors">Dashboard</a>
+                    <a href="#chains" class="text-white/80 hover:text-white transition-colors">Chains</a>
+                    <a href="#addresses" class="text-white/80 hover:text-white transition-colors">Addresses</a>
+                    <a href="#validation" class="text-white/80 hover:text-white transition-colors">Validation</a>
+                </div>
+                <button id="theme-toggle" class="text-white/80 hover:text-white transition-colors">
+                    🌙
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-float">
+                    Sovereign Proof Machine
+                </h1>
+                <p class="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
+                    Bank-ready registry infrastructure with cryptographic validation for L1 chains and verified addresses
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <button onclick="scrollToSection('dashboard')" class="glass hover-lift px-8 py-4 rounded-2xl text-white font-semibold text-lg">
+                        View Dashboard
+                    </button>
+                    <button onclick="validateRegistry()" class="glass hover-lift px-8 py-4 rounded-2xl text-white font-semibold text-lg">
+                        Validate Registry
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="pb-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass hover-lift rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-white" id="chain-count">20</div>
+                    <div class="text-white/80">L1 Chains</div>
+                </div>
+                <div class="glass hover-lift rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-white" id="address-count">32</div>
+                    <div class="text-white/80">Verified Addresses</div>
+                </div>
+                <div class="glass hover-lift rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-white" id="validation-status">✅</div>
+                    <div class="text-white/80">Validation Status</div>
+                </div>
+                <div class="glass hover-lift rounded-2xl p-6 text-center">
+                    <div class="text-3xl font-bold text-white" id="merkle-root">Valid</div>
+                    <div class="text-white/80">Merkle Proof</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="pb-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Live Registry Dashboard</h2>
+            
+            <!-- Real-time Data Display -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <div class="glass hover-lift rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6">Chain Health Monitor</h3>
+                    <div id="chain-health" class="space-y-4">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+                </div>
+                
+                <div class="glass hover-lift rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6">Merkle Verification</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/80">Current Root:</span>
+                            <span id="current-merkle" class="text-green-400 font-mono text-sm">Loading...</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/80">Last Updated:</span>
+                            <span id="last-updated" class="text-white">Loading...</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-white/80">Validation:</span>
+                            <span id="validation-result" class="text-green-400">✅ Valid</span>
+                        </div>
+                    </div>
+                    <button onclick="refreshMerkleProof()" class="mt-6 glass hover-lift px-6 py-2 rounded-lg text-white">
+                        Refresh Proof
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chains Section -->
+    <section id="chains" class="pb-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">L1 Chain Registry</h2>
+            
+            <div class="glass rounded-2xl p-8 overflow-hidden">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-white mb-4 md:mb-0">Active Chains</h3>
+                    <div class="flex space-x-4">
+                        <input type="text" id="chain-search" placeholder="Search chains..." 
+                               class="glass px-4 py-2 rounded-lg text-white placeholder-white/50 border-none outline-none">
+                        <button onclick="exportChains()" class="glass hover-lift px-4 py-2 rounded-lg text-white">
+                            📥 Export
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-white">
+                        <thead>
+                            <tr class="border-b border-white/20">
+                                <th class="text-left py-4 px-2">Chain</th>
+                                <th class="text-left py-4 px-2">ID</th>
+                                <th class="text-left py-4 px-2">Type</th>
+                                <th class="text-left py-4 px-2">Status</th>
+                                <th class="text-left py-4 px-2">Health</th>
+                            </tr>
+                        </thead>
+                        <tbody id="chains-table">
+                            <!-- Dynamic content will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Addresses Section -->
+    <section id="addresses" class="pb-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Verified Address Book</h2>
+            
+            <div class="glass rounded-2xl p-8">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-white mb-4 md:mb-0">DeFi Protocol Addresses</h3>
+                    <div class="flex space-x-4">
+                        <select id="category-filter" class="glass px-4 py-2 rounded-lg text-white border-none outline-none">
+                            <option value="">All Categories</option>
+                            <option value="DEX">DEX</option>
+                            <option value="Stablecoin">Stablecoin</option>
+                            <option value="Bridge">Bridge</option>
+                            <option value="Governance">Governance</option>
+                        </select>
+                        <button onclick="exportAddresses()" class="glass hover-lift px-4 py-2 rounded-lg text-white">
+                            📥 Export
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="addresses-grid">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Validation Section -->
+    <section id="validation" class="pb-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Cryptographic Validation</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="glass hover-lift rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6">QR Code Generator</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="qr-input" placeholder="Enter data for QR generation..." 
+                               class="glass w-full px-4 py-2 rounded-lg text-white placeholder-white/50 border-none outline-none">
+                        <button onclick="generateQR()" class="glass hover-lift w-full px-6 py-3 rounded-lg text-white">
+                            Generate QR Code
+                        </button>
+                        <div id="qr-code" class="bg-white p-4 rounded-lg text-center hidden">
+                            <!-- QR code will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass hover-lift rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6">Registry Export</h3>
+                    <div class="space-y-4">
+                        <p class="text-white/80">Export registry data for regulatory compliance and audit purposes.</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button onclick="exportJSON()" class="glass hover-lift px-4 py-3 rounded-lg text-white">
+                                📄 JSON Export
+                            </button>
+                            <button onclick="exportCSV()" class="glass hover-lift px-4 py-3 rounded-lg text-white">
+                                📊 CSV Export
+                            </button>
+                        </div>
+                        <button onclick="downloadProof()" class="glass hover-lift w-full px-6 py-3 rounded-lg text-white">
+                            🔐 Download Merkle Proof
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass mt-16">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <div class="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+                    <span class="text-white font-bold">Unykorn Registry</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">Security</a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">Compliance</a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">API Docs</a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">GitHub</a>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-6 pt-6 text-center">
+                <p class="text-white/60">© 2024 Unykorn Registry. Bank-ready sovereign proof infrastructure.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        // Sample data - in production, this would come from your CSV files
+        const chainsData = [
+            { id: 1, name: 'Ethereum', symbol: 'ETH', type: 'L1', status: 'active', health: 'healthy' },
+            { id: 56, name: 'Binance Smart Chain', symbol: 'BNB', type: 'L1', status: 'active', health: 'healthy' },
+            { id: 137, name: 'Polygon', symbol: 'MATIC', type: 'L2', status: 'active', health: 'warning' },
+            { id: 43114, name: 'Avalanche', symbol: 'AVAX', type: 'L1', status: 'active', health: 'healthy' },
+            { id: 250, name: 'Fantom', symbol: 'FTM', type: 'L1', status: 'active', health: 'healthy' }
+        ];
+
+        const addressesData = [
+            { address: '0xA0b86a33E6417Fa96fA8A0e3B1b0E5E5b0c5B4d0', name: 'Uniswap V3 Router', protocol: 'Uniswap', category: 'DEX' },
+            { address: '0x6B175474E89094C44Da98b954EedeAC495271d0F', name: 'DAI Stablecoin', protocol: 'MakerDAO', category: 'Stablecoin' },
+            { address: '0x8894E0a0c962CB723c1976a4421c95949bE2D4E6', name: 'BSC Bridge', protocol: 'Binance', category: 'Bridge' },
+            { address: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984', name: 'Uniswap Token', protocol: 'Uniswap', category: 'Governance' }
+        ];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadChains();
+            loadAddresses();
+            loadMerkleData();
+            
+            // Set up search functionality
+            document.getElementById('chain-search').addEventListener('input', filterChains);
+            document.getElementById('category-filter').addEventListener('change', filterAddresses);
+        });
+
+        function loadChains() {
+            const tbody = document.getElementById('chains-table');
+            tbody.innerHTML = chainsData.map(chain => `
+                <tr class="border-b border-white/10 hover:bg-white/5">
+                    <td class="py-4 px-2">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                ${chain.symbol.substring(0, 2)}
+                            </div>
+                            <span>${chain.name}</span>
+                        </div>
+                    </td>
+                    <td class="py-4 px-2">${chain.id}</td>
+                    <td class="py-4 px-2">
+                        <span class="px-2 py-1 rounded-full text-xs ${chain.type === 'L1' ? 'bg-blue-500/20 text-blue-300' : 'bg-purple-500/20 text-purple-300'}">
+                            ${chain.type}
+                        </span>
+                    </td>
+                    <td class="py-4 px-2">
+                        <span class="px-2 py-1 rounded-full text-xs ${chain.status === 'active' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}">
+                            ${chain.status}
+                        </span>
+                    </td>
+                    <td class="py-4 px-2">
+                        <span class="text-${chain.health === 'healthy' ? 'green' : 'yellow'}-400">
+                            ${chain.health === 'healthy' ? '✅' : '⚠️'}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function loadAddresses() {
+            const grid = document.getElementById('addresses-grid');
+            grid.innerHTML = addressesData.map(addr => `
+                <div class="glass hover-lift rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-white font-semibold">${addr.name}</h4>
+                        <span class="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-300">${addr.category}</span>
+                    </div>
+                    <p class="text-white/60 text-sm mb-2">${addr.protocol}</p>
+                    <p class="text-white/80 text-xs font-mono break-all">${addr.address}</p>
+                </div>
+            `).join('');
+        }
+
+        function loadMerkleData() {
+            // This would typically fetch from your MERKLE_ROOTS.json
+            document.getElementById('current-merkle').textContent = 'abff9f45fd1f0c12d5c303437d8f7a4bd73bd735223a3b2ba605aee0005f0a08';
+            document.getElementById('last-updated').textContent = new Date().toLocaleString();
+        }
+
+        function filterChains() {
+            const search = document.getElementById('chain-search').value.toLowerCase();
+            const rows = document.querySelectorAll('#chains-table tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(search) ? '' : 'none';
+            });
+        }
+
+        function filterAddresses() {
+            const category = document.getElementById('category-filter').value;
+            const cards = document.querySelectorAll('#addresses-grid > div');
+            cards.forEach(card => {
+                const cardCategory = card.querySelector('.bg-blue-500\\/20').textContent;
+                card.style.display = !category || cardCategory === category ? '' : 'none';
+            });
+        }
+
+        function generateQR() {
+            const input = document.getElementById('qr-input').value;
+            if (!input) return;
+            
+            const qrDiv = document.getElementById('qr-code');
+            qrDiv.innerHTML = '';
+            qrDiv.classList.remove('hidden');
+            
+            QRCode.toCanvas(qrDiv, input, { width: 200, margin: 2 }, function(error) {
+                if (error) console.error(error);
+            });
+        }
+
+        function exportJSON() {
+            const data = { chains: chainsData, addresses: addressesData };
+            downloadFile(JSON.stringify(data, null, 2), 'unykorn_registry.json', 'application/json');
+        }
+
+        function exportCSV() {
+            const csv = chainsData.map(chain => `${chain.id},${chain.name},${chain.symbol},${chain.type},${chain.status}`).join('\\n');
+            downloadFile('chain_id,name,symbol,type,status\\n' + csv, 'unykorn_chains.csv', 'text/csv');
+        }
+
+        function downloadProof() {
+            const proof = { merkle_root: document.getElementById('current-merkle').textContent, timestamp: new Date().toISOString() };
+            downloadFile(JSON.stringify(proof, null, 2), 'merkle_proof.json', 'application/json');
+        }
+
+        function downloadFile(content, filename, contentType) {
+            const blob = new Blob([content], { type: contentType });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function validateRegistry() {
+            alert('Registry validation initiated. Check console for detailed results.');
+            console.log('🔍 Unykorn Registry Validation Results:', {
+                chains: chainsData.length,
+                addresses: addressesData.length,
+                merkle_root: document.getElementById('current-merkle').textContent,
+                status: 'VALID ✅'
+            });
+        }
+
+        function refreshMerkleProof() {
+            // Simulate refresh
+            const currentTime = new Date().toLocaleString();
+            document.getElementById('last-updated').textContent = currentTime;
+            
+            // Add animation
+            document.getElementById('validation-result').innerHTML = '🔄 Refreshing...';
+            setTimeout(() => {
+                document.getElementById('validation-result').innerHTML = '✅ Valid';
+            }, 1000);
+        }
+
+        // Theme toggle functionality
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark');
+            this.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>

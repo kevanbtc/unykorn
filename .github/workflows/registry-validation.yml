@@ -1,0 +1,287 @@
+name: Registry Validation and Deployment
+
+on:
+  push:
+    branches: [ main, copilot/* ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run nightly at 2 AM UTC for RPC monitoring
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  validate-registry:
+    runs-on: ubuntu-latest
+    name: Validate Registry Data
+    
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install aiohttp requests
+        
+    - name: Validate L1 Chain Registry
+      run: |
+        echo "🔍 Validating L1 Chain Registry..."
+        python validate_registry.py
+        
+    - name: Check registry file integrity
+      run: |
+        echo "📊 Registry Statistics:"
+        echo "Chains: $(tail -n +2 unykorn_l1_chains.csv | wc -l)"
+        echo "Addresses: $(tail -n +2 unykorn_address_book.csv | wc -l)"
+        
+        # Validate CSV format
+        echo "🔍 Validating CSV format..."
+        python -c "
+import csv
+import sys
+
+# Validate chains CSV
+try:
+    with open('unykorn_l1_chains.csv', 'r') as f:
+        reader = csv.DictReader(f)
+        chains = list(reader)
+        print(f'✅ Chains CSV valid: {len(chains)} chains')
+        
+        # Check required fields
+        required_fields = ['chain_id', 'name', 'symbol', 'rpc_url', 'status']
+        for field in required_fields:
+            if field not in reader.fieldnames:
+                print(f'❌ Missing field: {field}')
+                sys.exit(1)
+                
+except Exception as e:
+    print(f'❌ Chains CSV error: {e}')
+    sys.exit(1)
+
+# Validate addresses CSV
+try:
+    with open('unykorn_address_book.csv', 'r') as f:
+        reader = csv.DictReader(f)
+        addresses = list(reader)
+        print(f'✅ Addresses CSV valid: {len(addresses)} addresses')
+        
+        # Check required fields
+        required_fields = ['address', 'name', 'protocol', 'category', 'chain_id']
+        for field in required_fields:
+            if field not in reader.fieldnames:
+                print(f'❌ Missing field: {field}')
+                sys.exit(1)
+                
+except Exception as e:
+    print(f'❌ Addresses CSV error: {e}')
+    sys.exit(1)
+
+print('✅ All validations passed')
+"
+        
+    - name: Generate Registry Report
+      run: |
+        echo "# Registry Validation Report" > validation_report.md
+        echo "Generated: $(date)" >> validation_report.md
+        echo "" >> validation_report.md
+        echo "## Statistics" >> validation_report.md
+        echo "- L1 Chains: $(tail -n +2 unykorn_l1_chains.csv | wc -l)" >> validation_report.md
+        echo "- Verified Addresses: $(tail -n +2 unykorn_address_book.csv | wc -l)" >> validation_report.md
+        echo "- Merkle Root: $(python -c 'import json; data=json.load(open("MERKLE_ROOTS.json")); print(data["merkle_roots"]["combined"])')" >> validation_report.md
+        echo "- Last Updated: $(python -c 'import json; data=json.load(open("MERKLE_ROOTS.json")); print(data["timestamp"])')" >> validation_report.md
+        
+    - name: Upload validation artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: validation-report
+        path: |
+          validation_report.md
+          MERKLE_ROOTS.json
+        retention-days: 30
+
+  deploy-github-pages:
+    runs-on: ubuntu-latest
+    needs: validate-registry
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/copilot/')
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Create site directory
+      run: |
+        mkdir -p _site
+        cp index.html _site/
+        cp unykorn_l1_chains.csv _site/
+        cp unykorn_address_book.csv _site/
+        cp MERKLE_ROOTS.json _site/
+        
+        # Create a simple API endpoint for registry data
+        mkdir -p _site/api
+        echo '{
+          "chains": "unykorn_l1_chains.csv",
+          "addresses": "unykorn_address_book.csv", 
+          "merkle": "MERKLE_ROOTS.json",
+          "last_updated": "'$(date -Iseconds)'"
+        }' > _site/api/registry.json
+        
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '_site'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scan
+    
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Run security checks
+      run: |
+        echo "🔐 Running security checks..."
+        
+        # Check for sensitive data in CSVs
+        if grep -i "private\|secret\|key\|password" unykorn_*.csv; then
+          echo "❌ Potential sensitive data found in CSV files"
+          exit 1
+        fi
+        
+        # Validate address formats
+        python -c "
+import csv
+import re
+
+address_pattern = re.compile(r'^0x[a-fA-F0-9]{40}$')
+
+with open('unykorn_address_book.csv', 'r') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        if not address_pattern.match(row['address']):
+            print(f'❌ Invalid address format: {row[\"address\"]}')
+            exit(1)
+
+print('✅ All addresses have valid format')
+"
+        
+        echo "✅ Security scan completed successfully"
+
+  rpc-health-check:
+    runs-on: ubuntu-latest
+    name: RPC Health Monitoring
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+        
+    - name: Install dependencies
+      run: |
+        pip install aiohttp requests
+        
+    - name: Run RPC health checks
+      run: |
+        python -c "
+import csv
+import asyncio
+import aiohttp
+import json
+from datetime import datetime
+
+async def check_rpc(session, name, url):
+    try:
+        timeout = aiohttp.ClientTimeout(total=10)
+        payload = {
+            'jsonrpc': '2.0',
+            'method': 'eth_blockNumber',
+            'params': [],
+            'id': 1
+        }
+        
+        async with session.post(url, json=payload, timeout=timeout) as response:
+            if response.status == 200:
+                data = await response.json()
+                if 'result' in data:
+                    return {'name': name, 'url': url, 'status': 'healthy', 'block': data['result']}
+            return {'name': name, 'url': url, 'status': 'unhealthy', 'error': f'HTTP {response.status}'}
+    except Exception as e:
+        return {'name': name, 'url': url, 'status': 'unhealthy', 'error': str(e)}
+
+async def main():
+    results = []
+    
+    with open('unykorn_l1_chains.csv', 'r') as f:
+        reader = csv.DictReader(f)
+        chains = [(row['name'], row['rpc_url']) for row in reader if row['status'] == 'active']
+    
+    async with aiohttp.ClientSession() as session:
+        tasks = [check_rpc(session, name, url) for name, url in chains[:10]]  # Limit to 10
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+    
+    # Generate report
+    report = {
+        'timestamp': datetime.utcnow().isoformat(),
+        'total_checked': len(results),
+        'healthy': len([r for r in results if isinstance(r, dict) and r.get('status') == 'healthy']),
+        'unhealthy': len([r for r in results if isinstance(r, dict) and r.get('status') == 'unhealthy']),
+        'results': [r for r in results if isinstance(r, dict)]
+    }
+    
+    with open('rpc_health_report.json', 'w') as f:
+        json.dump(report, f, indent=2)
+    
+    print('🏥 RPC Health Check Results:')
+    print(f'Total Checked: {report[\"total_checked\"]}')
+    print(f'Healthy: {report[\"healthy\"]}')
+    print(f'Unhealthy: {report[\"unhealthy\"]}')
+    
+    for result in report['results']:
+        status_emoji = '✅' if result['status'] == 'healthy' else '❌'
+        print(f'{status_emoji} {result[\"name\"]}: {result[\"status\"]}')
+
+asyncio.run(main())
+"
+        
+    - name: Upload RPC health report
+      uses: actions/upload-artifact@v4
+      with:
+        name: rpc-health-report
+        path: rpc_health_report.json
+        retention-days: 7
+
+  notify-completion:
+    runs-on: ubuntu-latest
+    needs: [validate-registry, deploy-github-pages, security-scan]
+    if: always()
+    
+    steps:
+    - name: Notify completion
+      run: |
+        echo "🚀 Unykorn Registry CI/CD Pipeline Completed"
+        echo "✅ Validation: ${{ needs.validate-registry.result }}"
+        echo "🌐 Deployment: ${{ needs.deploy-github-pages.result }}"
+        echo "🔐 Security: ${{ needs.security-scan.result }}"
