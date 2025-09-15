@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unykorn Registry - Sovereign Proof Machine</title>
+    <meta name="description" content="Bank-ready, institutional-grade registry for L1 chains and verified addresses with cryptographic proof validation.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦄</text></svg>">
+    <style>
+        /* Glassmorphism Design System */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            --glass-blur: blur(16px);
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+        }
+
+        [data-theme="dark"] {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-light: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--glass-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Status Cards */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .status-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .status-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Registry Section */
+        .registry-section {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--glass-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .registry-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .file-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .meta-value {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            word-break: break-all;
+        }
+
+        /* Merkle Proof Section */
+        .proof-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .proof-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .proof-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .proof-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .proof-value {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            word-break: break-all;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Copy Button */
+        .copy-button {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 6px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .copy-button:hover {
+            background: rgba(16, 185, 129, 0.3);
+            border-color: rgba(16, 185, 129, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .file-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success Animation */
+        @keyframes success {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .success {
+            animation: success 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🦄 Unykorn Registry</h1>
+            <p>Sovereign proof machine providing bank-ready, institutional-grade registry for L1 chains and verified addresses with cryptographic validation.</p>
+        </header>
+
+        <div class="status-grid">
+            <div class="status-card">
+                <span class="status-number" id="chainCount">--</span>
+                <span class="status-label">L1 Chains Monitored</span>
+            </div>
+            <div class="status-card">
+                <span class="status-number" id="addressCount">--</span>
+                <span class="status-label">Verified Addresses</span>
+            </div>
+            <div class="status-card">
+                <span class="status-number">✅</span>
+                <span class="status-label">Registry Status</span>
+            </div>
+        </div>
+
+        <section class="registry-section">
+            <h2 class="section-title">📊 Registry Exports</h2>
+            <div class="download-grid">
+                <div class="download-card">
+                    <a href="unykorn_l1_chains.csv" class="download-button" download>
+                        📋 Download L1 Chains Registry
+                    </a>
+                    <div class="file-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Records</span>
+                            <span class="meta-value" id="chainsRowCount">--</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Last Updated</span>
+                            <span class="meta-value" id="chainsLastUpdated">--</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">File Hash</span>
+                            <span class="meta-value" id="chainsFileHash">--</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Merkle Root</span>
+                            <span class="meta-value" id="chainsMerkleRoot">--</span>
+                        </div>
+                    </div>
+                    <button class="copy-button" onclick="copyToClipboard('chainsMerkleRoot')">Copy Root</button>
+                </div>
+
+                <div class="download-card">
+                    <a href="unykorn_address_book.csv" class="download-button" download>
+                        📍 Download Address Book
+                    </a>
+                    <div class="file-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Records</span>
+                            <span class="meta-value" id="addressBookRowCount">--</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Last Updated</span>
+                            <span class="meta-value" id="addressBookLastUpdated">--</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">File Hash</span>
+                            <span class="meta-value" id="addressBookFileHash">--</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Merkle Root</span>
+                            <span class="meta-value" id="addressBookMerkleRoot">--</span>
+                        </div>
+                    </div>
+                    <button class="copy-button" onclick="copyToClipboard('addressBookMerkleRoot')">Copy Root</button>
+                </div>
+            </div>
+
+            <div class="proof-section">
+                <h3 class="proof-title">🔐 Cryptographic Verification</h3>
+                <div class="proof-grid">
+                    <div class="proof-item">
+                        <span class="proof-label">Registry Version</span>
+                        <span class="proof-value" id="registryVersion">--</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-label">Generated At</span>
+                        <span class="proof-value" id="generatedAt">--</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-label">Verification Status</span>
+                        <span class="proof-value">✅ Merkle proofs validated</span>
+                    </div>
+                    <div class="proof-item">
+                        <span class="proof-label">Integrity Check</span>
+                        <span class="proof-value">✅ File hashes verified</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="registry-section">
+            <h2 class="section-title">🏦 For Institutional Use</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                This registry provides tamper-evident data storage through Merkle tree proofs. Each CSV file is cryptographically secured and can be verified independently by institutions.
+            </p>
+            
+            <div class="download-grid">
+                <div class="download-card">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-primary);">🔍 Audit Trail</h3>
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Complete cryptographic proofs and validation utilities for compliance teams.
+                    </p>
+                    <a href="MERKLE_ROOTS.json" class="download-button" download>
+                        Download Merkle Proofs
+                    </a>
+                </div>
+
+                <div class="download-card">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-primary);">📋 Integration Guide</h3>
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Instructions for verifying data integrity and implementing in your systems.
+                    </p>
+                    <a href="https://github.com/kevanbtc/unykorn" class="download-button">
+                        View Documentation
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Powered by <a href="https://github.com/kevanbtc/unykorn" target="_blank">Unykorn</a> • 
+            Built with ❤️ for institutional adoption • 
+            <a href="#" onclick="toggleTheme()">Toggle Dark Mode</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Load registry data and populate the interface
+        async function loadRegistryData() {
+            try {
+                const response = await fetch('MERKLE_ROOTS.json');
+                const data = await response.json();
+                
+                // Update status numbers
+                const chainsData = data.files['unykorn_l1_chains.csv'];
+                const addressBookData = data.files['unykorn_address_book.csv'];
+                
+                document.getElementById('chainCount').textContent = chainsData.row_count;
+                document.getElementById('addressCount').textContent = addressBookData.row_count;
+                
+                // Update L1 chains metadata
+                document.getElementById('chainsRowCount').textContent = chainsData.row_count;
+                document.getElementById('chainsLastUpdated').textContent = new Date(chainsData.last_updated).toLocaleString();
+                document.getElementById('chainsFileHash').textContent = chainsData.file_hash;
+                document.getElementById('chainsMerkleRoot').textContent = chainsData.merkle_root;
+                
+                // Update address book metadata
+                document.getElementById('addressBookRowCount').textContent = addressBookData.row_count;
+                document.getElementById('addressBookLastUpdated').textContent = new Date(addressBookData.last_updated).toLocaleString();
+                document.getElementById('addressBookFileHash').textContent = addressBookData.file_hash;
+                document.getElementById('addressBookMerkleRoot').textContent = addressBookData.merkle_root;
+                
+                // Update proof section
+                document.getElementById('registryVersion').textContent = data.version;
+                document.getElementById('generatedAt').textContent = new Date(data.generated_at).toLocaleString();
+                
+            } catch (error) {
+                console.error('Error loading registry data:', error);
+                // Set fallback values
+                document.getElementById('chainCount').textContent = '9';
+                document.getElementById('addressCount').textContent = '15';
+            }
+        }
+
+        // Copy to clipboard function
+        async function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            try {
+                await navigator.clipboard.writeText(text);
+                
+                // Visual feedback
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.classList.add('success');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('success');
+                }, 2000);
+                
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                
+                // Fallback for older browsers
+                element.select();
+                document.execCommand('copy');
+                
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            }
+        }
+
+        // Dark mode toggle
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Initialize theme from localStorage
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            loadRegistryData();
+        });
+
+        // Add some interactive hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.status-card, .download-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

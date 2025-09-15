@@ -1,0 +1,243 @@
+name: 🌐 RPC Health Monitor
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  rpc-health-check:
+    name: Monitor L1 Chain RPC Endpoints
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: 📦 Install Dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip install requests
+
+    - name: 🌐 Check RPC Endpoints Health
+      run: |
+        python3 << 'EOF'
+        import csv
+        import json
+        import requests
+        import time
+        from datetime import datetime, timezone
+        
+        def check_rpc_health(rpc_url, chain_name, chain_id):
+            """Check if RPC endpoint is responding correctly."""
+            try:
+                # Standard JSON-RPC request for chain ID
+                payload = {
+                    "jsonrpc": "2.0",
+                    "method": "eth_chainId",
+                    "params": [],
+                    "id": 1
+                }
+                
+                response = requests.post(
+                    rpc_url, 
+                    json=payload, 
+                    timeout=10,
+                    headers={"Content-Type": "application/json"}
+                )
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    if 'result' in data:
+                        returned_chain_id = int(data['result'], 16)  # Convert hex to int
+                        expected_chain_id = int(chain_id)
+                        
+                        if returned_chain_id == expected_chain_id:
+                            return True, "OK", response.elapsed.total_seconds()
+                        else:
+                            return False, f"Chain ID mismatch: expected {expected_chain_id}, got {returned_chain_id}", response.elapsed.total_seconds()
+                    else:
+                        return False, f"Invalid response: {data.get('error', 'Unknown error')}", response.elapsed.total_seconds()
+                else:
+                    return False, f"HTTP {response.status_code}", response.elapsed.total_seconds()
+            
+            except requests.exceptions.Timeout:
+                return False, "Timeout (>10s)", 10.0
+            except requests.exceptions.ConnectionError:
+                return False, "Connection error", 0.0
+            except Exception as e:
+                return False, f"Error: {str(e)}", 0.0
+        
+        # Load chains data
+        health_results = []
+        failed_chains = []
+        
+        print("🌐 Starting RPC Health Check...")
+        print("=" * 60)
+        
+        with open('exports/unykorn_l1_chains.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                chain_id = row['chain_id']
+                name = row['name']
+                rpc_url = row['rpc_url']
+                status = row['status']
+                
+                # Skip inactive chains
+                if status.lower() in ['inactive', 'deprecated']:
+                    print(f"⏭️  Skipping {name} (status: {status})")
+                    continue
+                
+                print(f"🔍 Checking {name} (Chain ID: {chain_id})...")
+                
+                is_healthy, message, response_time = check_rpc_health(rpc_url, name, chain_id)
+                
+                result = {
+                    'chain_id': chain_id,
+                    'name': name,
+                    'rpc_url': rpc_url,
+                    'healthy': is_healthy,
+                    'message': message,
+                    'response_time_ms': round(response_time * 1000, 2),
+                    'checked_at': datetime.now(timezone.utc).isoformat()
+                }
+                
+                health_results.append(result)
+                
+                if is_healthy:
+                    print(f"  ✅ {name}: {message} ({result['response_time_ms']}ms)")
+                else:
+                    print(f"  ❌ {name}: {message} ({result['response_time_ms']}ms)")
+                    failed_chains.append(name)
+                
+                # Small delay to be respectful to RPC providers
+                time.sleep(0.5)
+        
+        # Save detailed results
+        with open('rpc_health_report.json', 'w') as f:
+            json.dump({
+                'check_timestamp': datetime.now(timezone.utc).isoformat(),
+                'total_chains': len(health_results),
+                'healthy_chains': len([r for r in health_results if r['healthy']]),
+                'failed_chains': len(failed_chains),
+                'results': health_results
+            }, f, indent=2)
+        
+        print("\n" + "=" * 60)
+        print("📊 RPC Health Check Summary:")
+        healthy_count = len([r for r in health_results if r['healthy']])
+        total_count = len(health_results)
+        
+        print(f"✅ Healthy: {healthy_count}/{total_count}")
+        print(f"❌ Failed: {len(failed_chains)}/{total_count}")
+        
+        if failed_chains:
+            print(f"\n⚠️  Failed chains: {', '.join(failed_chains)}")
+        
+        # Set exit code based on health
+        if len(failed_chains) > 0:
+            print(f"\n⚠️  {len(failed_chains)} chains are unhealthy!")
+            # Don't fail the workflow for RPC issues, just report
+            # exit(1)
+        else:
+            print("\n🎉 All monitored chains are healthy!")
+        
+        EOF
+
+    - name: 📊 Generate Health Report
+      run: |
+        echo "## 🌐 RPC Health Monitor Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        # Parse the JSON report
+        python3 << 'EOF' >> $GITHUB_STEP_SUMMARY
+        import json
+        
+        with open('rpc_health_report.json', 'r') as f:
+            report = json.load(f)
+        
+        print(f"### 📊 Summary")
+        print(f"- **Total Chains Monitored:** {report['total_chains']}")
+        print(f"- **Healthy Chains:** {report['healthy_chains']} ✅")
+        print(f"- **Failed Chains:** {report['failed_chains']} ❌")
+        print(f"- **Check Time:** {report['check_timestamp']}")
+        print("")
+        
+        print("### 🌐 Chain Status Details")
+        print("| Chain | Status | Response Time | Message |")
+        print("|-------|--------|---------------|---------|")
+        
+        for result in report['results']:
+            status_icon = "✅" if result['healthy'] else "❌"
+            chain_name = result['name']
+            response_time = f"{result['response_time_ms']}ms"
+            message = result['message']
+            print(f"| {chain_name} | {status_icon} | {response_time} | {message} |")
+        
+        if report['failed_chains'] > 0:
+            print("")
+            print("### ⚠️ Action Required")
+            print("Some RPC endpoints are experiencing issues. Consider:")
+            print("- Checking with RPC providers")
+            print("- Updating RPC URLs if endpoints have changed")
+            print("- Marking chains as 'inactive' if permanently unavailable")
+        
+        EOF
+
+    - name: 📤 Archive Health Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: rpc-health-report
+        path: rpc_health_report.json
+        retention-days: 30
+
+    - name: 💬 Create Issue on Failures
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          // Only create issue if RPC checks failed
+          const fs = require('fs');
+          if (fs.existsSync('rpc_health_report.json')) {
+            const report = JSON.parse(fs.readFileSync('rpc_health_report.json', 'utf8'));
+            
+            if (report.failed_chains > 0) {
+              const failedChains = report.results
+                .filter(r => !r.healthy)
+                .map(r => `- **${r.name}** (Chain ${r.chain_id}): ${r.message}`)
+                .join('\n');
+              
+              const issueBody = `## 🌐 RPC Health Check Failed
+              
+              The automated RPC health monitor detected issues with the following chains:
+              
+              ${failedChains}
+              
+              ### 📊 Summary
+              - **Total Chains:** ${report.total_chains}
+              - **Failed Chains:** ${report.failed_chains}
+              - **Check Time:** ${report.check_timestamp}
+              
+              ### 🔧 Recommended Actions
+              1. Verify RPC endpoint URLs are still valid
+              2. Check if providers have service issues
+              3. Update chain status to 'inactive' if permanently unavailable
+              4. Consider alternative RPC providers for affected chains
+              
+              _This issue was automatically generated by the RPC Health Monitor._`;
+              
+              github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `🌐 RPC Health Alert: ${report.failed_chains} chains failing`,
+                body: issueBody,
+                labels: ['rpc-health', 'automated']
+              });
+            }
+          }

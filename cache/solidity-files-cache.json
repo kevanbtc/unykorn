@@ -2643,6 +2643,45 @@
       "artifacts": [
         "MerkleLib"
       ]
+    },
+    "/home/runner/work/unykorn/unykorn/contracts/RegistryNotary.sol": {
+      "lastModificationDate": 1757935489684,
+      "contentHash": "838cc453bfe0fbf6c1f1c1a453ad1a1f",
+      "sourceName": "contracts/RegistryNotary.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/access/AccessControl.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.24"
+      ],
+      "artifacts": [
+        "RegistryNotary"
+      ]
     }
   }
 }
