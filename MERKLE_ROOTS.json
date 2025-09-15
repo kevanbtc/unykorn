@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-09-15T11:18:25.193531+00:00",
+  "chain_count": 20,
+  "address_count": 32,
+  "merkle_roots": {
+    "chains": "9b1a5491536fa801f4d32be06e53975bc2973ae1b9febc57f2d2ba86c3ae9100",
+    "addresses": "2a8d7534b9c94b9ee515b748259b59fb00f554f42c7d440321b2614af0f926bc",
+    "combined": "abff9f45fd1f0c12d5c303437d8f7a4bd73bd735223a3b2ba605aee0005f0a08"
+  },
+  "validation_metadata": {
+    "validator_version": "1.0.0",
+    "algorithm": "SHA-256",
+    "tree_type": "binary_merkle"
+  }
+}

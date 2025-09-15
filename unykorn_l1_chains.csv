@@ -1,0 +1,21 @@
+chain_id,name,symbol,rpc_url,explorer_url,type,status,launch_date,market_cap_usd,daily_volume_usd,validator_count,avg_block_time,finality_time,gas_token,bridge_addresses,governance_token,staking_enabled,eip1559_enabled,proof_type,consensus_algorithm
+1,Ethereum,ETH,https://mainnet.infura.io/v3/,https://etherscan.io,L1,active,2015-07-30,240000000000,12000000000,900000,12,5,ETH,"0xA0b86a33E6417Fa96fA8A0e3B1b0E5E5b0c5B4d0",ETH,true,true,PoS,Gasper
+56,Binance Smart Chain,BNB,https://bsc-dataseed.binance.org,https://bscscan.com,L1,active,2020-09-01,45000000000,800000000,21,3,15,BNB,"0x8894E0a0c962CB723c1976a4421c95949bE2D4E6",BNB,true,true,PoA,Parlia
+137,Polygon,MATIC,https://polygon-rpc.com,https://polygonscan.com,L2,active,2020-05-30,8000000000,400000000,100,2,10,MATIC,"0x40ec5B33f54e0E8A33A975908C5BA1c14e5BbbDf",MATIC,true,true,PoS,Heimdall
+43114,Avalanche,AVAX,https://api.avax.network/ext/bc/C/rpc,https://snowtrace.io,L1,active,2020-09-22,12000000000,600000000,1300,2,3,AVAX,"0x50ff3B278fCC70ec7A9465063d68029AB460eA04",AVAX,true,true,PoS,Snowman
+250,Fantom,FTM,https://rpcapi.fantom.network,https://ftmscan.com,L1,active,2019-12-27,1500000000,80000000,65,1,5,FTM,"0xC564EE9f21Ed8A2d8E7e76c085740d5e4c5FaFbE",FTM,true,true,PoS,Lachesis
+25,Cronos,CRO,https://evm.cronos.org,https://cronoscan.com,L1,active,2021-11-08,2200000000,45000000,27,5,15,CRO,"0xe44Fd7fCb2b1581822D0c862B68222998a0c299a",CRO,true,true,PoA,Tendermint
+42161,Arbitrum One,ARB,https://arb1.arbitrum.io/rpc,https://arbiscan.io,L2,active,2021-08-31,2800000000,350000000,0,0.25,7,ETH,"0x8315177aB297bA92A06054cE80a67Ed4DBd7ed3a",ARB,false,true,OR,AnyTrust
+10,Optimism,OP,https://mainnet.optimism.io,https://optimistic.etherscan.io,L2,active,2021-12-16,1800000000,180000000,0,2,7,ETH,"0x25ace71c97B33Cc4729CF772ae268934F7ab5fA1",OP,false,true,OR,Bedrock
+100,Gnosis Chain,xDAI,https://rpc.gnosischain.com,https://gnosisscan.io,L1,active,2018-10-08,350000000,15000000,180000,5,12,xDAI,"0x4C36d2919e407f0Cc2Ee3c993ccF8ac26d9CE64e",GNO,true,true,PoS,AuRa
+1284,Moonbeam,GLMR,https://rpc.api.moonbeam.network,https://moonbeam.moonscan.io,L1,active,2022-01-11,400000000,8000000,64,12,20,GLMR,"0x10f6F8C87E1C84d2Df4089e2e1B60d52E2Ba3D2E",GLMR,true,true,PoS,BABE
+1285,Moonriver,MOVR,https://rpc.api.moonriver.moonbeam.network,https://moonriver.moonscan.io,L1,active,2021-08-19,180000000,3500000,48,12,20,MOVR,"0x10f6F8C87E1C84d2Df4089e2e1B60d52E2Ba3D2E",MOVR,true,true,PoS,BABE
+2000,Dogechain,DOGE,https://rpc.dogechain.dog,https://explorer.dogechain.dog,L1,active,2022-08-29,450000000,12000000,25,2,8,DOGE,"0x6A4dD7B0CD06Ad71e5dF6D47E4Da6C8A0f3A5E0a",DC,true,true,PoS,IBFT
+8453,Base,ETH,https://mainnet.base.org,https://basescan.org,L2,active,2023-08-09,3200000000,420000000,0,2,7,ETH,"0x866E82a600A1414e583f7F13623F1aC5d58b0Afa",ETH,false,true,OR,Bedrock
+324,zkSync Era,ETH,https://mainnet.era.zksync.io,https://explorer.zksync.io,L2,active,2023-03-24,850000000,95000000,0,1,10,ETH,"0x32400084C286CF3E17e7B677ea9583e60a000324",ETH,false,true,ZK,zkSTARK
+59144,Linea,ETH,https://rpc.linea.build,https://lineascan.build,L2,active,2023-07-11,650000000,75000000,0,2,12,ETH,"0xd19d4B5d358258f05D7B411E21A1460D11B0876F",ETH,false,true,ZK,zkSNARK
+534352,Scroll,ETH,https://rpc.scroll.io,https://scrollscan.com,L2,active,2023-10-17,420000000,35000000,0,3,15,ETH,"0x781e90f1c8Fc4611c9b7497C3B47F99Ef6969CbC",SCR,false,true,ZK,zkEVM
+5000,Mantle,MNT,https://rpc.mantle.xyz,https://explorer.mantle.xyz,L2,active,2023-07-17,680000000,42000000,0,1,8,MNT,"0x95fC37A27a2f68e3A647CDc081F0A89bb47c3012",MNT,false,true,OR,EigenDA
+42220,Celo,CELO,https://forno.celo.org,https://explorer.celo.org,L1,active,2020-04-22,750000000,18000000,110,5,10,CELO,"0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",CELO,true,true,PoS,IBFT
+1666600001,Harmony,ONE,https://api.harmony.one,https://explorer.harmony.one,L1,active,2019-06-28,350000000,8500000,320,2,5,ONE,"0xf9fB1c508fF49F78b60d3A96dea99Fa5d7F3A8A6",ONE,true,true,PoS,FBFT
+122,Fuse,FUSE,https://rpc.fuse.io,https://explorer.fuse.io,L1,active,2019-08-15,85000000,2100000,65,5,12,FUSE,"0x3014ca10b91cb3D0AD85fEf7A3Cb95BCAc9c0f79",FUSE,true,true,PoS,AuRa
