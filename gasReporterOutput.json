@@ -1615,23 +1615,10 @@
     "contract": "TokenERC20",
     "method": "initialize",
     "fnSig": "initialize(string,string)",
-    "intrinsicGas": [
-     21976,
-     21976
-    ],
-    "callData": [
-     0,
-     0
-    ],
-    "gasData": [
-     336219,
-     336219
-    ],
-    "numberOfCalls": 2,
-    "executionGasAverage": 336219,
-    "calldataGasAverage": 0,
-    "min": 336219,
-    "max": 336219
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
    },
    "TokenERC20_790ca413": {
     "key": "790ca413",
@@ -1815,23 +1802,10 @@
     "contract": "TokenERC20",
     "method": "transfer",
     "fnSig": "transfer(address,uint256)",
-    "intrinsicGas": [
-     21572,
-     21572
-    ],
-    "callData": [
-     0,
-     0
-    ],
-    "gasData": [
-     56009,
-     56009
-    ],
-    "numberOfCalls": 2,
-    "executionGasAverage": 56009,
-    "calldataGasAverage": 0,
-    "min": 56009,
-    "max": 56009
+    "intrinsicGas": [],
+    "callData": [],
+    "gasData": [],
+    "numberOfCalls": 0
    },
    "TokenERC20_23b872dd": {
     "key": "23b872dd",
@@ -4893,23 +4867,8 @@
    },
    {
     "name": "TokenERC20",
-    "gasData": [
-     2181575,
-     2181575,
-     2181575,
-     2181575
-    ],
-    "callData": [
-     0,
-     0,
-     0,
-     0
-    ],
-    "executionGasAverage": 2181575,
-    "calldataGasAverage": 0,
-    "min": 2181575,
-    "max": 2181575,
-    "percent": 7.3
+    "gasData": [],
+    "callData": []
    },
    {
     "name": "USDFToken",
