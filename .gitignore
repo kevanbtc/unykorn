@@ -1,3 +1,28 @@
 node_modules/
 build/
 .env
+
+# Hardhat files
+cache/
+artifacts/
+coverage/
+coverage.json
+typechain/
+typechain-types/
+
+# Deployment artifacts
+deployments-*.json
+
+# Gas reporter
+gasReporterOutput.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
