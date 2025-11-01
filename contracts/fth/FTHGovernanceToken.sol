@@ -55,8 +55,6 @@ contract FTHGovernanceToken is
         super._update(from, to, amount);
     }
 
-
-
     /// @dev Required by UUPS
     function _authorizeUpgrade(address newImplementation)
         internal

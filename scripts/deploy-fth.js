@@ -1,5 +1,6 @@
 const hre = require("hardhat");
 const { ethers, upgrades } = require("hardhat");
+const fs = require("fs");
 
 /**
  * Deploy FTH Sovereign Settlement Infrastructure
@@ -205,7 +206,6 @@ async function main() {
   console.table(summary);
 
   // Save deployment addresses
-  const fs = require("fs");
   const deploymentData = {
     network: hre.network.name,
     timestamp: new Date().toISOString(),

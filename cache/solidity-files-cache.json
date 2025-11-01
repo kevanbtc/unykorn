@@ -2927,8 +2927,8 @@
       ]
     },
     "/home/runner/work/unykorn/unykorn/contracts/fth/FTHGovernanceToken.sol": {
-      "lastModificationDate": 1760336617779,
-      "contentHash": "f47f04605323b5c22fb63b375b919af4",
+      "lastModificationDate": 1761967843602,
+      "contentHash": "c7200f13a0a1b63c61702706301ffc90",
       "sourceName": "contracts/fth/FTHGovernanceToken.sol",
       "solcConfig": {
         "version": "0.8.24",

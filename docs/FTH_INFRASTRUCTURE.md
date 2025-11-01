@@ -1,8 +1,8 @@
-# XRPL Sovereign Settlement Infrastructure
+# FTH Sovereign Settlement Infrastructure
 
 ## Overview
 
-This repository implements the **FTH (Future Tech Holdings) Sovereign Settlement Infrastructure** - a fully-compliant, closed-loop XRPL-native RWA-backed token system with a private ledger DEX that ties directly into the Future Tech Holdings gold ecosystem.
+This repository implements the **FTH (Future Tech Holdings) Sovereign Settlement Infrastructure** - a fully-compliant, closed-loop EVM-compatible RWA-backed token system with a private ledger DEX that ties directly into the Future Tech Holdings gold ecosystem.
 
 ## Architecture
 

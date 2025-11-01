@@ -59,9 +59,6 @@ describe("FTH Sovereign Settlement Infrastructure", function () {
 
   describe("USDF Token", function () {
     it("Should mint USDF to whitelisted addresses", async function () {
-      // Use deployer (who deployed via treasury) or grant from deployer
-      const adminRole = await usdf.DEFAULT_ADMIN_ROLE();
-      
       // Deployer needs to grant roles since treasury.target has admin
       await usdf.grantRole(await usdf.MINTER_ROLE(), deployer.address);
       await usdf.grantRole(await usdf.COMPLIANCE_ROLE(), deployer.address);
